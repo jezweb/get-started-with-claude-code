@@ -7,7 +7,11 @@ A practical starter kit for web development with Claude Code. Get coding in seco
 In any project directory:
 
 ```bash
+# Basic install
 curl -fsSL https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/install.sh | sh
+
+# With pre-approved commands (recommended for smoother workflow)
+curl -fsSL https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/install.sh | sh -s -- --with-settings
 ```
 
 Or manually:
@@ -30,6 +34,7 @@ rm -rf get-started-with-claude-code
   - `/refactor` - Improve code quality
   - `/mvp` - Build from existing plan
   - And more...
+- **settings.local.json** (optional) - Pre-approved commands for smoother workflow
 
 ## 🎯 How to Use
 
@@ -66,6 +71,8 @@ Edit `CLAUDE.md` to set your preferences:
 - Code style guidelines
 - Project structure
 - Common commands
+
+See `SETTINGS_GUIDE.md` for customizing pre-approved commands.
 
 ## 🤝 Contributing
 

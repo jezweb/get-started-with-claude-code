@@ -30,6 +30,13 @@ echo "📥 Downloading additional commands..."
 curl -fsSL "$BASE_URL/.claude/commands/optimize.md" -o .claude/commands/optimize.md 2>/dev/null || true
 curl -fsSL "$BASE_URL/.claude/commands/test-all.md" -o .claude/commands/test-all.md 2>/dev/null || true
 
+# Download settings if requested
+if [ "$1" = "--with-settings" ]; then
+    echo "📥 Downloading pre-approved command settings..."
+    curl -fsSL "$BASE_URL/.claude/settings.local.json" -o .claude/settings.local.json
+    SETTINGS_MSG="   - .claude/settings.local.json (pre-approved commands)"
+fi
+
 echo "✅ Claude Code Starter Kit installed!"
 echo ""
 echo "📝 Files created:"
@@ -37,6 +44,7 @@ echo "   - CLAUDE.md (project context)"
 echo "   - kickoff-prompt.md (start new projects)"
 echo "   - mvp-from-plan.md (build from existing plan)"
 echo "   - .claude/commands/ (useful commands)"
+[ -n "$SETTINGS_MSG" ] && echo "$SETTINGS_MSG"
 echo ""
 echo "🎯 Next steps:"
 echo "   1. Edit CLAUDE.md to match your project"
