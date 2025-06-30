@@ -40,3 +40,16 @@ that will make those available for all your claude sessions
 for firecrawl
 
 claude mcp add --transport sse firecrawl -s user https://mcp.firecrawl.dev/{FIRECRAWL_API_KEY}/sse
+
+
+for Jina AI
+
+claude mcp add jina-mcp-tools npx jina-mcp-tools -e "JINA_API_KEY={JINA_AI_API_KEY}
+
+
+
+for Brave Search
+
+claude mcp add brave-search "npx" -- "-y" "@modelcontextprotocol/server-brave-search" -e "{BRAVE_SEARCH_API_KEY}"
+
+
