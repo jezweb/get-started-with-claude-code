@@ -5,11 +5,9 @@ Use this when you already have a PRD, design doc, or detailed plan from elsewher
 ## The Prompt
 
 ```
-I have a detailed plan for [PROJECT NAME]:
+[insert the @ file name and project name first]
 
-[INSERT YOUR PRD/PLAN HERE]
-
-Now create the MVP using a test-driven approach. 
+This is project brief to create an MVP using a test-driven approach. 
 
 You have access to MCP servers:
 - context7 for looking up coding documentation
@@ -22,6 +20,8 @@ As you work, create any documents you think would be helpful, such as:
 - Frontend component structure
 - Test strategy and coverage goals
 
+You can use todo, scratchpad, jupyter and md files as you need to for planning, tracking and managing the project.
+
 Please:
 1. Use a test-first approach - write tests before implementation
 2. Add proper validation on both frontend and backend
@@ -30,12 +30,12 @@ Please:
 5. Include comprehensive error handling
 6. Provide clear scripts to start the application
 7. If using Python, create a virtual environment first
-8. Use high port numbers (20000+) to avoid conflicts
+8. Use high port numbers (20000+) picked randomly to avoid conflicts
 9. Keep the dev server running so I can monitor progress
 
 After the MVP is working, suggest enhancements and improvements we could add.
 
-Let's build this systematically.
+Let's build this systematically. Think about all the details.
 ```
 
 ## Tips for Best Results
