@@ -11,7 +11,7 @@ This is project brief to create an MVP using a test-driven approach.
 
 You have access to MCP servers:
 - context7 for looking up coding documentation
-- playwright for e2e testing
+- playwright MCP Server for e2e testing
 
 As you work, create any documents you think would be helpful, such as:
 - Planning doc with TDD/BDD approach
