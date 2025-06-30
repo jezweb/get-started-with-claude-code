@@ -1,54 +1,62 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file helps Claude Code understand your project context and work effectively with your codebase.
 
-## Repository Purpose
+## Project Context
 
-This is a **getting started guide and template repository** for Claude Code. It helps users go from zero to building their first app, with resources for both beginners and experienced developers.
+### Tech Stack
+- **Frontend**: [Vue 3 / React / vanilla JS - choose based on project]
+- **Build Tool**: Vite (fast, modern, minimal config)
+- **Styling**: Tailwind CSS / vanilla CSS
+- **State**: Pinia (Vue) / Zustand (React) / Context API
+- **Testing**: Vitest / Jest
+- **Package Manager**: npm
 
-## Repository Structure
+### Code Style
+- ES6+ modern JavaScript
+- Async/await over promises
+- Functional components (React/Vue)
+- Clear, descriptive variable names
+- Comments only when necessary
 
+### Project Structure
 ```
-get-started-with-claude-code/
-├── START_HERE.md                 # Main entry point for new users
-├── simple-start-prompt.md        # Beginner-friendly todo app prompt
-├── QUICK_REFERENCE.md           # Common commands, FAQs, tips
-├── examples/                    # Example projects
-│   ├── todo-app-brief.md       # Filled-out project brief example
-│   └── todo-app-prompt.md      # Example prompts and variations
-├── project_planning/            # Planning templates
-│   ├── PROJECT_BRIEF.md        # Template for documenting requirements
-│   ├── PROJECT_CONTEXT_PROMPT.md # Prompt templates for Claude
-│   └── README.md               # Guide for using templates
-└── advanced/                    # Advanced topics
-    ├── advanced-planning-guide.md # Complex project planning (TDD/BDD)
-    └── optional-tools-setup.md    # MCP server setup (Playwright, Context7)
+src/
+├── components/     # Reusable UI components
+├── views/          # Page components
+├── stores/         # State management
+├── utils/          # Helper functions
+├── styles/         # Global styles
+└── main.js         # Entry point
 ```
 
-## For New Users
+### Common Commands
+```bash
+npm install         # Install dependencies
+npm run dev         # Start dev server (port 5173)
+npm run build       # Build for production
+npm run test        # Run tests
+npm run lint        # Lint code
+```
 
-Direct beginners to:
-1. **START_HERE.md** - Step-by-step guide to create their first app
-2. **simple-start-prompt.md** - Ready-to-use prompt for a todo app
-3. **QUICK_REFERENCE.md** - Handy reference for common questions
+### Development Guidelines
+1. **Start Simple** - Get basic functionality working first
+2. **Component-Based** - Break UI into reusable components
+3. **State Management** - Keep state minimal and centralized
+4. **Error Handling** - Always handle errors gracefully
+5. **Performance** - Optimize only when needed
 
-## For Experienced Users
+### Testing Approach
+- Unit tests for utilities
+- Component tests for UI logic
+- E2E tests for critical paths
+- Aim for practical coverage, not 100%
 
-Point to:
-1. **project_planning/** - Structured templates for complex projects
-2. **advanced/** - Advanced planning methodologies and tool setup
-3. **examples/** - Detailed examples with variations
+### Git Workflow
+- Descriptive commit messages
+- Feature branches for new work
+- Test before committing
+- Keep commits focused
 
-## Key Principles
-
-- **Progressive Complexity** - Start simple, add features incrementally
-- **Learn by Doing** - Focus on building working apps quickly
-- **Clear Documentation** - Every file explains its purpose clearly
-- **Practical Examples** - Real, working examples throughout
-
-## Usage Notes
-
-- Encourage users to start with START_HERE.md
-- Templates can be copied and customized for any project
-- Examples show both simple and advanced approaches
-- Advanced features are optional, not required for success
+## Quick Start
+Use `kickoff-prompt.md` to start a new project or `/kickoff` command if available.

@@ -1,67 +1,76 @@
-# Get Started with Claude Code
+# Claude Code Starter Kit
 
-A beginner-friendly guide to help you go from zero to building your first app with Claude Code.
+A practical starter kit for web development with Claude Code. Get coding in seconds, not minutes.
 
-## 🚀 Quick Start
+## 🚀 Quick Install
+
+In any project directory:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/install.sh | sh
+```
+
+Or manually:
 
 ```bash
 git clone https://github.com/jezweb/get-started-with-claude-code.git
-cd get-started-with-claude-code
-claude-code
+cp -r get-started-with-claude-code/{CLAUDE.md,kickoff-prompt.md,.claude} .
+rm -rf get-started-with-claude-code
 ```
 
-Then follow the guide in `START_HERE.md`!
+## 📦 What You Get
 
-## 📚 What's Inside
+- **CLAUDE.md** - Project context for Claude Code
+- **kickoff-prompt.md** - Universal prompt for starting web projects
+- **.claude/commands/** - Useful commands:
+  - `/feature` - Add new features
+  - `/debug` - Fix issues
+  - `/deploy` - Prepare for production
+  - `/refactor` - Improve code quality
+  - And more...
 
-- **[START_HERE.md](START_HERE.md)** - Your entry point! Step-by-step guide to create your first app
-- **[simple-start-prompt.md](simple-start-prompt.md)** - Ready-to-use prompt for building a todo app
-- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Handy reference with FAQs and troubleshooting
-- **[examples/](examples/)** - Example projects with prompts and variations
-- **[project_planning/](project_planning/)** - Templates for planning larger projects
-- **[advanced/](advanced/)** - Advanced topics for experienced users
+## 🎯 How to Use
 
-## 🎯 Who This Is For
+1. **Install** the starter kit in your project
+2. **Edit** CLAUDE.md to match your tech stack
+3. **Run** `claude-code`
+4. **Use** kickoff-prompt.md or type `/kickoff` to start
 
-- **Complete beginners** who have never used Claude Code
-- **Developers** wanting to learn AI-assisted coding
-- **Anyone** who wants to build something quickly
+## 🛠️ Works Great For
 
-## 🛠️ Prerequisites
+- Landing pages
+- Web applications  
+- APIs and services
+- Full-stack projects
+- Static sites
+- Prototypes
 
-- [Claude Code](https://claude.ai/code) installed
-- Basic familiarity with using a terminal
-- That's it!
+## 📝 Example Usage
 
-## 📖 Learning Path
+After installing, start Claude Code and try:
 
-1. **Start Here** → Follow `START_HERE.md` to build your first app
-2. **Build More** → Try the todo app in `simple-start-prompt.md`
-3. **Get Creative** → Explore examples and build your own ideas
-4. **Level Up** → Use project planning templates for bigger projects
+```
+I want to build a dashboard for tracking expenses with charts and category breakdown.
+```
 
-## 💡 What You'll Learn
+Or use the kickoff prompt for a structured approach.
 
-- How to talk to Claude Code effectively
-- Building web apps without prior coding knowledge
-- Going from idea to working application
-- Best practices for AI-assisted development
+## 🎨 Customization
+
+Edit `CLAUDE.md` to set your preferences:
+- Preferred framework (React, Vue, etc.)
+- Code style guidelines
+- Project structure
+- Common commands
 
 ## 🤝 Contributing
 
-Found something that could be better? Feel free to:
-- Open an issue
-- Submit a pull request
-- Share your experience
+PRs welcome! Keep it simple and practical.
 
-## 📝 License
+## 📄 License
 
-This project is open source and available under the MIT License.
-
-## 🙏 Acknowledgments
-
-Created to help more people discover the joy of building with Claude Code.
+MIT - Use freely in your projects.
 
 ---
 
-**Ready to build something amazing? [Start here!](START_HERE.md)** 🚀
+**Ready to code?** Run the install command above and start building! 🚀
