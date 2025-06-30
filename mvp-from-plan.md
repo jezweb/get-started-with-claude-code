@@ -30,7 +30,7 @@ Please:
 5. Include comprehensive error handling
 6. Provide clear scripts to start the application
 7. If using Python, create a virtual environment first
-8. Use high port numbers (8080+) to avoid conflicts
+8. Use high port numbers (20000+) to avoid conflicts
 9. Keep the dev server running so I can monitor progress
 
 After the MVP is working, suggest enhancements and improvements we could add.
