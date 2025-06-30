@@ -29,7 +29,7 @@ Please:
 4. Create or ask for sample data/inputs as needed
 5. Include comprehensive error handling
 6. Provide clear scripts to start the application
-7. If using Python, create a virtual environment first
+7. If using Python3, create a venv virtual environment first
 8. Use high port numbers (20000+) picked randomly to avoid conflicts
 9. Keep the dev server running so I can monitor progress
 
