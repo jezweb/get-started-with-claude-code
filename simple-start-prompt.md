@@ -41,12 +41,6 @@ Please create all files and explain how to run it.
 4. **Explain the code** - Help you understand
 5. **Show you how to run it** - Get started quickly
 
-![Todo app with no tasks](images/browser/todo-app-empty.png)
-
-Once you add some tasks, it will look like this:
-
-![Todo app with tasks](images/browser/todo-app-with-tasks.png)
-
 ## After Claude Creates Your App
 
 ### Try These Improvements
@@ -58,8 +52,6 @@ Ask Claude to add any of these features:
    Add categories to tasks (Work, Personal, Shopping)
    with different colors for each category
    ```
-   
-   ![Todo app with categories](images/examples/todo-app-categories.png)
 
 2. **Due Dates**
    ```
@@ -75,8 +67,6 @@ Ask Claude to add any of these features:
    ```
    Add a dark mode toggle
    ```
-   
-   ![Todo app with dark mode](images/examples/todo-app-dark-mode.png)
 
 5. **Export/Import**
    ```

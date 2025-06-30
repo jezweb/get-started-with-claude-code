@@ -10,8 +10,6 @@ Welcome! This guide will help you create your first app with Claude Code in just
 mkdir ~/my-claude-guide && cd ~/my-claude-guide && git clone https://github.com/jezweb/get-started-with-claude-code.git . && claude-code
 ```
 
-![Terminal showing git clone command](images/terminal/terminal-git-clone.png)
-
 ### Option 2: Choose Your Own Folder Name
 ```bash
 # Replace 'my-project-name' with your preferred name:
@@ -23,9 +21,6 @@ claude-code
 ### Option 3: Download ZIP
 1. Visit https://github.com/jezweb/get-started-with-claude-code
 2. Click the green "Code" button → "Download ZIP"
-
-![GitHub download button](images/browser/github-download-zip.png)
-
 3. Extract to any folder
 4. Open terminal in that folder
 5. Run: `claude-code`
@@ -68,8 +63,6 @@ In your project folder, run:
 claude-code
 ```
 
-![Claude Code starting up](images/terminal/terminal-claude-start.png)
-
 ### Step 3: Copy This Prompt
 
 When Claude Code opens, paste this prompt:
@@ -84,8 +77,6 @@ Create a simple "Hello World" web app that:
 Make it colorful and fun!
 ```
 
-![Pasting your first prompt](images/terminal/terminal-first-prompt.png)
-
 ### Step 4: Watch the Magic ✨
 
 Claude will:
@@ -93,13 +84,9 @@ Claude will:
 2. Write the code
 3. Tell you how to run it
 
-![Claude creating files](images/terminal/terminal-files-created.png)
-
 ### Step 5: View Your App
 
 Open the HTML file in your browser and see your first app!
-
-![Your Hello World app running](images/browser/hello-world-app.png)
 
 ## What's Next?
 

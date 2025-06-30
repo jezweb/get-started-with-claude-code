@@ -37,14 +37,10 @@ A: Yes! Claude can execute commands, run servers, and test your application.
 **Q: How do I see what Claude is doing?**
 A: Claude will show you each file it creates/edits and explain the changes.
 
-![Claude Code in action](images/terminal/terminal-claude-active.png)
-
 ### Common Issues
 
 **Q: Claude says "command not found"**
 A: You might need to install dependencies. Ask Claude: "What do I need to install to run this?"
-
-![Example error message](images/terminal/terminal-error-example.png)
 
 **Q: My app won't start**
 A: Check if:
@@ -59,9 +55,7 @@ A: Try:
 - Clearing browser cache
 
 **Q: How do I debug JavaScript errors?**
-A: Open browser developer tools with F12:
-
-![Browser console for debugging](images/browser/browser-console-debug.png)
+A: Open browser developer tools with F12
 
 ## Useful Prompts
 
