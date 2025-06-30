@@ -15,6 +15,7 @@ mkdir -p .claude/commands
 echo "📥 Downloading starter files..."
 curl -fsSL "$BASE_URL/CLAUDE.md" -o CLAUDE.md
 curl -fsSL "$BASE_URL/kickoff-prompt.md" -o kickoff-prompt.md
+curl -fsSL "$BASE_URL/mvp-from-plan.md" -o mvp-from-plan.md
 
 # Download commands
 echo "📥 Downloading commands..."
@@ -22,6 +23,7 @@ curl -fsSL "$BASE_URL/.claude/commands/feature.md" -o .claude/commands/feature.m
 curl -fsSL "$BASE_URL/.claude/commands/debug.md" -o .claude/commands/debug.md
 curl -fsSL "$BASE_URL/.claude/commands/deploy.md" -o .claude/commands/deploy.md
 curl -fsSL "$BASE_URL/.claude/commands/refactor.md" -o .claude/commands/refactor.md
+curl -fsSL "$BASE_URL/.claude/commands/mvp.md" -o .claude/commands/mvp.md
 
 # Optional: Download other useful commands
 echo "📥 Downloading additional commands..."
@@ -32,7 +34,8 @@ echo "✅ Claude Code Starter Kit installed!"
 echo ""
 echo "📝 Files created:"
 echo "   - CLAUDE.md (project context)"
-echo "   - kickoff-prompt.md (project starter)"
+echo "   - kickoff-prompt.md (start new projects)"
+echo "   - mvp-from-plan.md (build from existing plan)"
 echo "   - .claude/commands/ (useful commands)"
 echo ""
 echo "🎯 Next steps:"

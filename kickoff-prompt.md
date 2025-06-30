@@ -2,6 +2,8 @@
 
 Use this prompt to start any web development project. Copy and customize as needed.
 
+> **Already have a detailed plan or PRD?** Use `mvp-from-plan.md` instead for a more structured approach.
+
 ## The Prompt
 
 ```

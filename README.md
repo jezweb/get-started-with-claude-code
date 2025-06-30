@@ -14,7 +14,7 @@ Or manually:
 
 ```bash
 git clone https://github.com/jezweb/get-started-with-claude-code.git
-cp -r get-started-with-claude-code/{CLAUDE.md,kickoff-prompt.md,.claude} .
+cp -r get-started-with-claude-code/{CLAUDE.md,kickoff-prompt.md,mvp-from-plan.md,.claude} .
 rm -rf get-started-with-claude-code
 ```
 
@@ -22,11 +22,13 @@ rm -rf get-started-with-claude-code
 
 - **CLAUDE.md** - Project context for Claude Code
 - **kickoff-prompt.md** - Universal prompt for starting web projects
+- **mvp-from-plan.md** - Build MVP from existing PRD/plan
 - **.claude/commands/** - Useful commands:
   - `/feature` - Add new features
   - `/debug` - Fix issues
   - `/deploy` - Prepare for production
   - `/refactor` - Improve code quality
+  - `/mvp` - Build from existing plan
   - And more...
 
 ## 🎯 How to Use
@@ -34,7 +36,9 @@ rm -rf get-started-with-claude-code
 1. **Install** the starter kit in your project
 2. **Edit** CLAUDE.md to match your tech stack
 3. **Run** `claude-code`
-4. **Use** kickoff-prompt.md or type `/kickoff` to start
+4. **Choose** your starting approach:
+   - **New idea?** Use `kickoff-prompt.md` or `/kickoff`
+   - **Have a plan?** Use `mvp-from-plan.md` or `/mvp`
 
 ## 🛠️ Works Great For
 
