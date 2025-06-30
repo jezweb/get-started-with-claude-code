@@ -35,3 +35,8 @@ hit enter
 claude
 
 that will make those available for all your claude sessions
+
+
+for firecrawl
+
+claude mcp add --transport sse firecrawl -s user https://mcp.firecrawl.dev/{FIRECRAWL_API_KEY}/sse
