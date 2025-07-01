@@ -44,7 +44,7 @@ claude mcp add --transport sse firecrawl -s user https://mcp.firecrawl.dev/{FIRE
 
 for Jina AI
 
-claude mcp add jina-mcp-tools -s user npx jina-mcp-tools -e JINA_API_KEY=jina_api_key
+claude mcp add jina-ai -s user npx jina-mcp-tools -e JINA_API_KEY=jina_api_key
 
 
 unsplash
