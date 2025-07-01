@@ -44,7 +44,7 @@ claude mcp add --transport sse firecrawl -s user https://mcp.firecrawl.dev/{FIRE
 
 for Jina AI
 
-claude mcp add jina-mcp-tools npx jina-mcp-tools -e "JINA_API_KEY={JINA_AI_API_KEY}
+claude mcp add jina-mcp-tools -s user npx jina-mcp-tools -e JINA_API_KEY=jina_api_key
 
 
 unsplash
@@ -54,4 +54,4 @@ run this
 npm install -g unsplash-mcp-server
 
 
-claude mcp add unsplash -e UNSPLASH_ACCESS_KEY=API-KEY-HERE -- unsplash-mcp-server
+claude mcp add unsplash -s user npx unsplash-mcp-server -e UNSPLASH_ACCESS_KEY=API-KEY-HERE
