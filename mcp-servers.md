@@ -48,13 +48,15 @@ claude mcp add jina-mcp-tools -s user npx jina-mcp-tools -e JINA_API_KEY=jina_ap
 
 
 unsplash
+
 https://playbooks.com/mcp/okooo5km-unsplash#claude-code-setup
 
 run this
+
 npm install -g unsplash-mcp-server
 
 
-claude mcp add unsplash -s user npx unsplash-mcp-server -e UNSPLASH_ACCESS_KEY=API-KEY-HERE
+claude mcp add -s user unsplash unsplash-mcp-server -e UNSPLASH_ACCESS_KEY=api-key-goes-here
 
 
 ![image](https://github.com/user-attachments/assets/7934355a-15a4-4b6f-82c4-5cb51bbaebeb)
