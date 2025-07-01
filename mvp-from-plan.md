@@ -32,6 +32,7 @@ Please:
 7. If using Python3, create a venv virtual environment first
 8. Use high port numbers (20000+) picked randomly to avoid conflicts
 9. Keep the dev server running so I can monitor progress
+10. Git feature branches and commits for each new feature or phase
 
 After the MVP is working, suggest enhancements and improvements we could add.
 
