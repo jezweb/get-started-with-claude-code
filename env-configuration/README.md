@@ -1,25 +1,42 @@
-# Environment Variable Configuration Guide
+# Environment Variable Configuration Resource
 
-## Overview
+> **🎯 Use Case**: Setting up environment variables for AI-powered applications  
+> **🤖 AI Models**: Optimized for Google Gemini 2.5 series (Pro, Flash, Flash-Lite)  
+> **📊 Level**: Beginner to Advanced  
+> **🔧 Languages**: Python/FastAPI focus, adaptable to any framework
 
-This comprehensive guide covers best practices for managing environment variables in AI-powered web applications, with a focus on Google Gemini as the primary AI provider. It includes templates for both simple and advanced use cases, security guidelines, and patterns for multi-model configurations.
+## 📁 What's in This Folder
 
-## 🚀 Quick Start
+| File | Purpose | Best For |
+|------|---------|----------|
+| **`.env.simple`** | Basic AI app template | Quick prototypes, single model setup |
+| **`.env.complete`** | Advanced multi-model config | Production apps, multiple use cases |
+| **`.env.example`** | Safe template with dummy values | Sharing configuration structure |
+| **`validate_env.py`** | Configuration validator | Checking setup before deployment |
+| **`config_example.py`** | FastAPI/Pydantic integration | Type-safe configuration loading |
+| **`setup.sh`** | Quick setup script | First-time configuration |
 
-1. Choose your template:
-   - **`.env.simple`** - Basic setup for single AI model usage
-   - **`.env.complete`** - Advanced setup with multiple models and use cases
+## 🚀 Quick Usage
 
-2. Copy the template to create your `.env` file:
-   ```bash
-   cp .env.simple .env
-   # or
-   cp .env.complete .env
-   ```
+### For AI Tools
+Point your AI assistant to this folder:
+```
+Using the environment configuration templates in env-configuration/, help me set up environment variables for a Gemini-powered chatbot with fallback models.
+```
 
-3. Fill in your actual API keys and customize settings
+### Grab What You Need
+```bash
+# Just the simple template
+curl -O https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/env-configuration/.env.simple
 
-4. **IMPORTANT**: Add `.env` to your `.gitignore` file immediately
+# Or the complete setup
+curl -O https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/env-configuration/.env.complete
+```
+
+### Local Setup
+1. Copy the template you need: `.env.simple` or `.env.complete`
+2. Rename to `.env` and fill in your API keys
+3. Run `python validate_env.py` to verify setup
 
 ## 📋 Table of Contents
 

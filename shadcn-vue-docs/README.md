@@ -1,6 +1,41 @@
-# shadcn/vue Complete Documentation
+# shadcn/vue Documentation Resource
 
-## Overview
+> **🎯 Use Case**: Vue.js applications with modern UI components  
+> **🎨 Framework**: shadcn/vue component library  
+> **📊 Level**: Beginner to Advanced  
+> **🔧 Tech Stack**: Vue 3, Nuxt.js, Vite, Tailwind CSS
+
+## 📁 What's in This Folder
+
+| File | Purpose | Best For |
+|------|---------|----------|
+| **`shadcn-vue-fundamentals-setup.md`** | Installation & core concepts | Getting started, project setup |
+| **`shadcn-vue-components-reference.md`** | 40+ components with examples | Finding specific components |
+| **`shadcn-vue-styling-theming.md`** | Theming & customization | Creating custom designs |
+| **`shadcn-vue-framework-integration.md`** | Vue 3, Nuxt, Vite patterns | Framework-specific setup |
+| **`shadcn-vue-blocks-advanced-patterns.md`** | Complex UI patterns | Advanced implementations |
+
+## 🚀 Quick Usage
+
+### For AI Tools
+Point your AI assistant to specific files:
+```
+Using the shadcn/vue components reference, help me build a data table with sorting and filtering.
+
+Using the theming guide, help me create a dark mode toggle for my Vue app.
+```
+
+### Grab What You Need
+```bash
+# Just the components reference
+curl -O https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/shadcn-vue-docs/shadcn-vue-components-reference.md
+
+# Or get the whole folder
+git clone https://github.com/jezweb/get-started-with-claude-code.git
+cp -r get-started-with-claude-code/shadcn-vue-docs ./my-project/
+```
+
+## 📋 Complete Documentation Overview
 
 This comprehensive documentation set covers all aspects of shadcn/vue development, from fundamental concepts to advanced implementation patterns. shadcn/vue is a collection of beautifully designed Vue components built using Radix Vue and Tailwind CSS that you can copy and paste into your applications.
 
