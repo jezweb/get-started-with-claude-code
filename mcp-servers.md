@@ -44,7 +44,7 @@ claude mcp add --transport sse firecrawl -s user https://mcp.firecrawl.dev/{FIRE
 
 crawl4ai (need to install on local machine first)
 
-claude mcp add --transport sse crawl4ai -s user http://localhost:11235/mcp/schema
+claude mcp add --transport sse crawl4ai -s user http://localhost:11235/mcp/sse
 
 
 
