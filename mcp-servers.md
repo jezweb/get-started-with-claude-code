@@ -42,6 +42,13 @@ for firecrawl
 claude mcp add --transport sse firecrawl -s user https://mcp.firecrawl.dev/{FIRECRAWL_API_KEY}/sse
 
 
+crawl4ai (need to install on local machine first)
+
+claude mcp add --transport sse crawl4ai -s user http://localhost:11235/mcp/schema
+
+
+
+
 for Jina AI
 
 claude mcp add jina-ai -s user npx jina-mcp-tools -e JINA_API_KEY=jina_api_key
