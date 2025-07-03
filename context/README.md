@@ -1,257 +1,124 @@
 # AI Development Context Library 📚
 
-This folder contains comprehensive documentation and guides designed to be consumed by AI assistants and MCP (Model Context Protocol) servers for Retrieval-Augmented Generation (RAG).
+A comprehensive, organized collection of documentation designed for AI assistants and MCP (Model Context Protocol) servers to provide intelligent development assistance.
 
 ## 🎯 Purpose
 
-This context library serves multiple purposes:
+This context library serves as a structured knowledge base for:
 
-1. **AI Assistant Context**: Provide rich, structured documentation that AI assistants can understand and use to help developers
-2. **MCP Server Integration**: Future-ready for Model Context Protocol servers to expose this documentation programmatically
-3. **RAG Implementation**: Organized for efficient retrieval and context injection during AI interactions
-4. **Knowledge Preservation**: Capture best practices, patterns, and domain knowledge in AI-consumable format
+1. **AI Assistant Context** - Rich documentation that AI assistants can understand and use to help developers
+2. **MCP Server Integration** - Future-ready for Model Context Protocol servers to expose documentation programmatically
+3. **RAG Implementation** - Optimized for retrieval-augmented generation and semantic search
+4. **Knowledge Preservation** - Capturing best practices and patterns in AI-consumable format
 
-## 📁 Contents
+## 📁 Library Structure
 
-### 1. AI Development Starter Kit
-**Path**: `ai-development-starter-kit/`
+### [01 - Getting Started](./01-getting-started/)
+Foundation resources for beginning your AI-assisted development journey
+- **AI Development Starter Kit** - Templates, workflows, and best practices
+- **Quick Starts** - Project kickoff prompts and MVP templates
+- **Project Templates** - Ready-to-use project structures
 
-A beginner-friendly documentation system for working with AI assistants like Claude Code. Includes:
-- Global setup templates (CLAUDE.md, settings.json)
-- Project templates and documentation structures
-- Mini prompt templates for common workflows
-- Best practices for AI-human collaboration
+### [02 - Languages & Frameworks](./02-languages-frameworks/)
+Language-specific documentation and framework guides
 
-**Key Features**:
-- Progressive complexity (simple → advanced)
-- Workflow patterns (planning, TDD, feature branching)
-- Environment configuration best practices
-- Handover documentation templates
+#### Python
+- **Modern Features** - Python 3.10-3.12 features and patterns
+- **FastAPI** - Complete web framework documentation
+- **Pydantic** - Data validation and serialization
+- **Claude Code SDK** - Python SDK for Claude integration
 
-### 2. OpenAPI/Swagger 2025 Guide
-**Path**: `openapi-swagger-2025-guide/`
+#### JavaScript
+- **Vue.js**
+  - **Shadcn/Vue** - Component library documentation
 
-Modern best practices for creating API documentation that serves both humans and AI agents. Includes:
-- AI-first API design principles
-- OpenAPI 3.1.0+ specifications
-- MCP server integration patterns
-- Machine-readable documentation strategies
-- Token-efficient formats
-- Semantic API design
+### [03 - AI APIs](./03-ai-apis/)
+Documentation for AI service providers and APIs
+- **Google Gemini** - Complete Gemini API guide with multimodal capabilities
+- *Coming Soon: OpenAI, Anthropic Claude, Multi-model patterns*
 
-**Key Features**:
-- Making APIs discoverable by AI agents
-- Structured data for automatic MCP server generation
-- Integration with AI SDKs and frameworks
-- Real-world examples and patterns
+### [04 - Backend Patterns](./04-backend-patterns/)
+Server-side development patterns and best practices
 
-### 3. Pydantic v2 Modern Guide
-**Path**: `pydantic-v2-modern-guide/`
+#### API Design
+- **OpenAPI/Swagger** - Modern API documentation standards
 
-Comprehensive guide to Pydantic v2's Rust-powered validation system. Includes:
-- Performance optimization strategies
-- Type system best practices
-- FastAPI integration patterns
-- Advanced validation techniques
-- Migration guides
-- Production patterns
+#### Databases *(Coming Soon)*
+- SQLite patterns
+- PostgreSQL best practices
+- Redis caching
 
-**Key Features**:
-- Rust core performance benefits
-- Modern Python type hints usage
-- Discriminated unions and advanced types
-- Testing and debugging strategies
+#### Authentication *(Coming Soon)*
+- JWT patterns
+- OAuth integration
 
-### 4. Shadcn/Vue Documentation
-**Path**: `shadcn-vue-docs/`
+### [05 - Frontend Patterns](./05-frontend-patterns/)
+Client-side development resources *(Coming Soon)*
+- Component libraries
+- State management
+- Styling approaches
 
-Complete documentation for building modern Vue.js applications with the shadcn/vue component library. Includes:
-- Installation and setup guides
-- 40+ component references with examples
-- Theming and customization patterns
-- Framework integration (Vue 3, Nuxt, Vite)
-- Advanced UI patterns and blocks
+### [06 - Testing](./06-testing/)
+Comprehensive testing documentation *(Coming Soon)*
+- Unit testing
+- Integration testing
+- E2E testing
+- TDD/BDD methodologies
 
-**Key Features**:
-- Copy/paste component approach
-- Tailwind CSS integration
-- Accessibility-first design
-- TypeScript support
+### [07 - DevOps & Deployment](./07-devops-deployment/)
+Infrastructure and deployment guides
 
-### 5. Python Modern Features Documentation
-**Path**: `python-modern-features-docs/`
+#### Cloud Platforms
+- **Cloudflare** - Edge computing and AI services
 
-Comprehensive coverage of Python 3.10-3.12 features for web development. Includes:
-- Pattern matching (match-case statements)
-- Union types with | operator
-- Exception groups and except*
-- Async/await web patterns
-- Type system improvements
-- Performance optimization
+*(Coming Soon: Docker, CI/CD, Monitoring)*
 
-**Key Features**:
-- FastAPI-focused examples
-- Modern type hints usage
-- Async patterns for web apps
-- Dataclasses vs Pydantic comparisons
+### [08 - Best Practices](./08-best-practices/)
+Cross-cutting concerns and standards
+- **Environment Configuration** - Secure .env patterns and templates
 
-### 6. Google Gemini API Documentation
-**Path**: `gemini-api-docs/`
+*(Coming Soon: Security, Version Control, Performance)*
 
-Complete guide to Google's Gemini AI models and API capabilities. Includes:
-- Model selection (Pro, Flash, Flash-Lite)
-- Multimodal capabilities (text, image, video, audio)
-- Function calling and grounding
-- Structured output generation
-- Safety settings and pricing
-- SDK integration patterns
+### [09 - Problem Solutions](./09-problem-solutions/)
+Real-world problems and their solutions
+- AI-driven testing guide
+- Gemini structured output patterns
+- MCP Playwright testing
+- PDF upload implementations
 
-**Key Features**:
-- Gemini 2.5 series coverage
-- Thinking mode implementation
-- Code execution capabilities
-- Embedding generation
-
-### 7. FastAPI Complete Documentation
-**Path**: `fastapi-complete-docs/`
-
-Comprehensive FastAPI framework documentation for building modern APIs. Includes:
-- Core concepts and project setup
-- Pydantic integration patterns
-- Middleware and authentication
-- Async, streaming, and WebSocket support
-- Testing and deployment strategies
-
-**Key Features**:
-- Production-ready patterns
-- Performance optimization
-- Security best practices
-- Real-world examples
-
-### 8. Environment Configuration Guide
-**Path**: `env-configuration/`
-
-Best practices for managing environment variables in AI-powered applications. Includes:
-- Security-first configuration
-- Multi-model AI setup patterns
-- FastAPI/Pydantic integration
-- Docker and deployment configs
-- Validation scripts and templates
-
-**Key Features**:
-- .env templates for different use cases
-- Cost optimization strategies
-- Fallback model configuration
-- Environment-specific settings
-
-### 9. Cloudflare Services Documentation
-**Path**: `cloudflare-services-docs/`
-
-Guide to Cloudflare's edge computing and AI services. Includes:
-- Workers serverless compute
-- AI inference (Workers AI)
-- Vector database (Vectorize)
-- Storage solutions (KV, R2, D1)
-- Durable Objects for stateful apps
-- Full-stack architecture patterns
-
-**Key Features**:
-- Edge-first development
-- AI Gateway management
-- Global distribution patterns
-- Integration examples
-
-### 10. Claude Code Python SDK Documentation
-**Path**: `claude-code-python-sdk-docs/`
-
-Documentation for the Claude Code Python SDK. Includes:
-- Installation and setup
-- Core API reference
-- FastAPI integration patterns
-- Best practices and examples
-
-**Key Features**:
-- Async support
-- Error handling patterns
-- Rate limiting strategies
-- Production deployment
+### [10 - Reference](./10-reference/)
+Quick reference materials and setup guides
+- **MCP Setup** - Model Context Protocol server configuration
+- *Coming Soon: Cheatsheets*
 
 ## 🚀 Usage Patterns
 
-### For AI Assistants (Claude, GPT, etc.)
+### For AI Assistants
 
-1. **Direct Reference**: AI assistants can read these files to understand best practices
-   ```
-   "Please follow the patterns in context/ai-development-starter-kit/project-template/CLAUDE.md"
-   ```
+```bash
+# Reference specific documentation
+"Use the FastAPI patterns from context/02-languages-frameworks/python/fastapi/"
 
-2. **Knowledge Retrieval**: Use as reference documentation during conversations
-   ```
-   "Check context/openapi-swagger-2025-guide for API documentation best practices"
-   ```
+# Apply templates
+"Follow the TDD workflow in context/01-getting-started/ai-development-starter-kit/"
 
-3. **Template Application**: Apply templates and patterns from the starter kit
-   ```
-   "Use the TDD workflow from context/ai-development-starter-kit/global-claude-setup/.claude/commands/tdd-feature.md"
-   ```
+# Solve problems
+"Check context/09-problem-solutions/ for PDF upload patterns"
+```
 
-### For MCP Servers (Future)
+### For MCP Servers
 
 ```python
-# Example MCP server configuration
+# Future MCP configuration
 mcp_server = MCPServer(
-    name="development-context",
+    name="dev-context",
     resources=[
         Resource(
-            uri="context://ai-development-starter-kit",
-            description="AI development patterns and templates",
+            uri="context://02-languages-frameworks/python/fastapi",
+            description="FastAPI web framework patterns",
             mime_type="text/markdown"
         ),
-        Resource(
-            uri="context://openapi-swagger-guide",
-            description="API documentation best practices",
-            mime_type="text/markdown"
-        ),
-        Resource(
-            uri="context://pydantic-v2-guide",
-            description="Modern Python validation patterns",
-            mime_type="text/markdown"
-        ),
-        Resource(
-            uri="context://shadcn-vue-docs",
-            description="Vue.js component library documentation",
-            mime_type="text/markdown"
-        ),
-        Resource(
-            uri="context://python-modern-features",
-            description="Python 3.10+ modern features guide",
-            mime_type="text/markdown"
-        ),
-        Resource(
-            uri="context://gemini-api-docs",
-            description="Google Gemini AI API documentation",
-            mime_type="text/markdown"
-        ),
-        Resource(
-            uri="context://fastapi-complete-docs",
-            description="FastAPI framework comprehensive guide",
-            mime_type="text/markdown"
-        ),
-        Resource(
-            uri="context://env-configuration",
-            description="Environment configuration best practices",
-            mime_type="text/markdown"
-        ),
-        Resource(
-            uri="context://cloudflare-services",
-            description="Cloudflare edge computing documentation",
-            mime_type="text/markdown"
-        ),
-        Resource(
-            uri="context://claude-code-sdk",
-            description="Claude Code Python SDK reference",
-            mime_type="text/markdown"
-        )
+        # Additional resources...
     ]
 )
 ```
@@ -259,112 +126,73 @@ mcp_server = MCPServer(
 ### For RAG Systems
 
 ```python
-# Example RAG integration
+# Load and index documentation
 from langchain.document_loaders import DirectoryLoader
 from langchain.text_splitter import MarkdownTextSplitter
 
-# Load context documents
 loader = DirectoryLoader('context/', glob="**/*.md")
 documents = loader.load()
 
-# Split for efficient retrieval
 splitter = MarkdownTextSplitter(chunk_size=1000)
 chunks = splitter.split_documents(documents)
-
-# Add to vector store for semantic search
-vectorstore.add_documents(chunks)
 ```
-
-## 🔄 Integration Strategies
-
-### 1. Local Development
-- Point AI assistants directly to this folder
-- Use file references in prompts
-- Include in project CLAUDE.md files
-
-### 2. CI/CD Pipeline
-- Validate documentation structure
-- Generate searchable indices
-- Deploy to documentation servers
-
-### 3. API Integration
-- Expose via REST endpoints
-- Implement MCP protocol
-- Enable programmatic access
 
 ## 📈 Benefits
 
 ### For Developers
-- Consistent patterns across projects
-- Reduced context switching
-- Better AI assistance
-- Preserved knowledge
+- **Consistent Patterns** - Standardized approaches across projects
+- **Quick Discovery** - Organized structure for finding resources
+- **Better AI Assistance** - AI understands your tech stack
+- **Learning Path** - Progressive complexity from basics to advanced
 
 ### For AI Assistants
-- Rich, structured context
-- Clear patterns to follow
-- Validated best practices
-- Efficient token usage
+- **Structured Knowledge** - Clear categorization and relationships
+- **Rich Context** - Comprehensive examples and patterns
+- **Efficient Retrieval** - Optimized for token usage
+- **Up-to-date Practices** - Modern patterns for 2025
 
-### For Organizations
-- Standardized workflows
-- Knowledge retention
-- Improved onboarding
-- Reduced documentation debt
+### For Teams
+- **Knowledge Sharing** - Centralized documentation
+- **Onboarding** - Clear learning progression
+- **Standards Enforcement** - Consistent practices
+- **Reduced Tech Debt** - Well-documented decisions
 
-## 🛠️ Maintenance
+## 🛠️ Contributing
 
-### Adding New Documentation
-1. Create a new folder under `context/`
-2. Include a clear README.md
-3. Structure content for AI consumption
-4. Use consistent formatting
-
-### Updating Existing Docs
-1. Keep versions synchronized
-2. Update examples for latest tools
-3. Validate with AI assistants
-4. Test retrieval patterns
+### Adding Documentation
+1. Choose the appropriate category (01-10)
+2. Create a descriptive folder name
+3. Include a README.md with overview
+4. Structure content for AI consumption
+5. Add practical examples
 
 ### Quality Guidelines
-- **Clarity**: Write for both humans and AI
-- **Structure**: Use consistent hierarchies
-- **Examples**: Include practical code samples
-- **Metadata**: Add descriptions and tags
-- **Testing**: Validate with target AI models
+- **Clarity** - Write for both humans and AI
+- **Examples** - Include working code samples
+- **Structure** - Use consistent formatting
+- **Updates** - Keep versions current
+- **Testing** - Validate with AI assistants
 
-## 🔮 Future Enhancements
+## 🔄 Maintenance
 
-### Planned Features
-1. **MCP Server Implementation**: Expose documentation via Model Context Protocol
-2. **Semantic Search**: Vector embeddings for similarity search
-3. **Version Management**: Track documentation versions
-4. **Usage Analytics**: Monitor which contexts are most valuable
-5. **Auto-generation**: Create context from codebases
+This library is actively maintained and expanded. Each category includes:
+- Comprehensive README files
+- Practical examples
+- Integration patterns
+- Best practices
+- Version information
 
-### Integration Goals
-- GitHub Actions for validation
-- IDE plugins for context access
-- API endpoints for remote access
-- Webhook updates for changes
-- Multi-language support
+## 🚦 Quick Navigation
 
-## 📝 Contributing
+**Just Starting?** → [01-getting-started/ai-development-starter-kit/](./01-getting-started/ai-development-starter-kit/)
 
-When adding new documentation:
-1. Follow the existing structure
-2. Optimize for AI readability
-3. Include practical examples
-4. Test with AI assistants
-5. Update this README
+**Need API Docs?** → [04-backend-patterns/api-design/](./04-backend-patterns/api-design/)
 
-## 🤝 Usage Rights
+**Python Developer?** → [02-languages-frameworks/python/](./02-languages-frameworks/python/)
 
-This documentation is designed to be:
-- Used by AI assistants for helping developers
-- Integrated into development workflows
-- Shared and adapted for specific needs
-- Extended with domain-specific knowledge
+**Deployment Help?** → [07-devops-deployment/](./07-devops-deployment/)
+
+**Stuck on Something?** → [09-problem-solutions/](./09-problem-solutions/)
 
 ---
 
