@@ -62,6 +62,120 @@ Comprehensive guide to Pydantic v2's Rust-powered validation system. Includes:
 - Discriminated unions and advanced types
 - Testing and debugging strategies
 
+### 4. Shadcn/Vue Documentation
+**Path**: `shadcn-vue-docs/`
+
+Complete documentation for building modern Vue.js applications with the shadcn/vue component library. Includes:
+- Installation and setup guides
+- 40+ component references with examples
+- Theming and customization patterns
+- Framework integration (Vue 3, Nuxt, Vite)
+- Advanced UI patterns and blocks
+
+**Key Features**:
+- Copy/paste component approach
+- Tailwind CSS integration
+- Accessibility-first design
+- TypeScript support
+
+### 5. Python Modern Features Documentation
+**Path**: `python-modern-features-docs/`
+
+Comprehensive coverage of Python 3.10-3.12 features for web development. Includes:
+- Pattern matching (match-case statements)
+- Union types with | operator
+- Exception groups and except*
+- Async/await web patterns
+- Type system improvements
+- Performance optimization
+
+**Key Features**:
+- FastAPI-focused examples
+- Modern type hints usage
+- Async patterns for web apps
+- Dataclasses vs Pydantic comparisons
+
+### 6. Google Gemini API Documentation
+**Path**: `gemini-api-docs/`
+
+Complete guide to Google's Gemini AI models and API capabilities. Includes:
+- Model selection (Pro, Flash, Flash-Lite)
+- Multimodal capabilities (text, image, video, audio)
+- Function calling and grounding
+- Structured output generation
+- Safety settings and pricing
+- SDK integration patterns
+
+**Key Features**:
+- Gemini 2.5 series coverage
+- Thinking mode implementation
+- Code execution capabilities
+- Embedding generation
+
+### 7. FastAPI Complete Documentation
+**Path**: `fastapi-complete-docs/`
+
+Comprehensive FastAPI framework documentation for building modern APIs. Includes:
+- Core concepts and project setup
+- Pydantic integration patterns
+- Middleware and authentication
+- Async, streaming, and WebSocket support
+- Testing and deployment strategies
+
+**Key Features**:
+- Production-ready patterns
+- Performance optimization
+- Security best practices
+- Real-world examples
+
+### 8. Environment Configuration Guide
+**Path**: `env-configuration/`
+
+Best practices for managing environment variables in AI-powered applications. Includes:
+- Security-first configuration
+- Multi-model AI setup patterns
+- FastAPI/Pydantic integration
+- Docker and deployment configs
+- Validation scripts and templates
+
+**Key Features**:
+- .env templates for different use cases
+- Cost optimization strategies
+- Fallback model configuration
+- Environment-specific settings
+
+### 9. Cloudflare Services Documentation
+**Path**: `cloudflare-services-docs/`
+
+Guide to Cloudflare's edge computing and AI services. Includes:
+- Workers serverless compute
+- AI inference (Workers AI)
+- Vector database (Vectorize)
+- Storage solutions (KV, R2, D1)
+- Durable Objects for stateful apps
+- Full-stack architecture patterns
+
+**Key Features**:
+- Edge-first development
+- AI Gateway management
+- Global distribution patterns
+- Integration examples
+
+### 10. Claude Code Python SDK Documentation
+**Path**: `claude-code-python-sdk-docs/`
+
+Documentation for the Claude Code Python SDK. Includes:
+- Installation and setup
+- Core API reference
+- FastAPI integration patterns
+- Best practices and examples
+
+**Key Features**:
+- Async support
+- Error handling patterns
+- Rate limiting strategies
+- Production deployment
+
 ## 🚀 Usage Patterns
 
 ### For AI Assistants (Claude, GPT, etc.)
@@ -101,6 +215,41 @@ mcp_server = MCPServer(
         Resource(
             uri="context://pydantic-v2-guide",
             description="Modern Python validation patterns",
+            mime_type="text/markdown"
+        ),
+        Resource(
+            uri="context://shadcn-vue-docs",
+            description="Vue.js component library documentation",
+            mime_type="text/markdown"
+        ),
+        Resource(
+            uri="context://python-modern-features",
+            description="Python 3.10+ modern features guide",
+            mime_type="text/markdown"
+        ),
+        Resource(
+            uri="context://gemini-api-docs",
+            description="Google Gemini AI API documentation",
+            mime_type="text/markdown"
+        ),
+        Resource(
+            uri="context://fastapi-complete-docs",
+            description="FastAPI framework comprehensive guide",
+            mime_type="text/markdown"
+        ),
+        Resource(
+            uri="context://env-configuration",
+            description="Environment configuration best practices",
+            mime_type="text/markdown"
+        ),
+        Resource(
+            uri="context://cloudflare-services",
+            description="Cloudflare edge computing documentation",
+            mime_type="text/markdown"
+        ),
+        Resource(
+            uri="context://claude-code-sdk",
+            description="Claude Code Python SDK reference",
             mime_type="text/markdown"
         )
     ]
