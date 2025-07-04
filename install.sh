@@ -89,7 +89,7 @@ validate_settings() {
 }
 
 # Check if Claude Code is installed (optional check)
-if [ -z "$SKIP_CLAUDE_CHECK" ]; then
+if [ -z "${SKIP_CLAUDE_CHECK:-}" ]; then
     claude_found=false
     
     # Try multiple detection methods
