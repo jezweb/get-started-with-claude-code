@@ -14,12 +14,35 @@ NC='\033[0m' # No Color
 echo -e "${BLUE}🚀 Claude Code Smart Installer${NC}"
 echo -e "${BLUE}==============================\n${NC}"
 
-# Check if Claude Code is installed
-if ! command -v claude-code &> /dev/null; then
-    echo -e "${YELLOW}⚠️  Claude Code not found!${NC}"
-    echo -e "Please install it first with: ${GREEN}npm install -g @anthropic-ai/claude-code${NC}"
-    echo -e "Then run this installer again.\n"
-    exit 1
+# Check if Claude Code is installed (optional check)
+if [ -z "$SKIP_CLAUDE_CHECK" ]; then
+    claude_found=false
+    
+    # Try multiple detection methods
+    if command -v claude-code &> /dev/null || \
+       which claude-code &> /dev/null 2>&1 || \
+       npm list -g @anthropic-ai/claude-code &> /dev/null 2>&1; then
+        claude_found=true
+    fi
+    
+    if [ "$claude_found" = false ]; then
+        echo -e "${YELLOW}⚠️  Claude Code not detected in PATH${NC}"
+        echo -e "\nThis might happen if:"
+        echo -e "  • npm global binaries aren't in your PATH"
+        echo -e "  • You installed it in a different shell"
+        echo -e "  • The PATH isn't fully loaded yet"
+        echo -e "\nIf you've already installed Claude Code, you can continue."
+        echo -e "If not, install it with: ${GREEN}npm install -g @anthropic-ai/claude-code${NC}"
+        echo
+        read -p "Continue anyway? (y/N) " -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            echo -e "${YELLOW}Installation cancelled.${NC}"
+            echo -e "\n${BLUE}Tip:${NC} You can skip this check with:"
+            echo -e "${GREEN}SKIP_CLAUDE_CHECK=1 curl -sSL https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/install.sh | bash${NC}"
+            exit 1
+        fi
+    fi
 fi
 
 # Download files to temp directory first
