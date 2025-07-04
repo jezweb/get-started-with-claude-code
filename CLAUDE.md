@@ -20,7 +20,6 @@ This file helps Claude Code understand your project context and work effectively
 - Comments only when necessary
 
 ### Project Structure
-```
 src/
 ├── components/     # Reusable UI components
 ├── views/          # Page components
@@ -28,16 +27,7 @@ src/
 ├── utils/          # Helper functions
 ├── styles/         # Global styles
 └── main.js         # Entry point
-```
 
-### Common Commands
-```bash
-npm install         # Install dependencies
-npm run dev         # Start dev server (port 5173)
-npm run build       # Build for production
-npm run test        # Run tests
-npm run lint        # Lint code
-```
 
 ### Development Guidelines
 1. **Start Simple** - Get basic functionality working first

@@ -1,10 +1,18 @@
 # Claude Code Documentation Resources
 
-A curated collection of comprehensive documentation and context resources for AI-assisted development. Point Claude Code, Gemini, or other AI tools at specific files/folders to get deep context for your projects.
+A curated collection of comprehensive documentation and context resources for AI-assisted development. Choose your path below:
 
-## 🎯 How to Use This Repository
+## 🚀 Want to Start Building with AI? 
 
-This is **not an installation kit** - it's a **resource library**. Here's how to use it:
+**👉 [Go to /get-started/](./get-started/) for a 2-step setup that gets you coding with Claude in minutes!**
+
+Perfect for beginners who want to start a new project with AI assistance.
+
+---
+
+## 📚 Looking for Documentation & References?
+
+This repository also serves as a **resource library** for experienced developers. Here's how to use it:
 
 ### 🤖 With AI Tools (Recommended)
 Point your AI assistant at specific resources:
