@@ -305,6 +305,31 @@ else
     fi
 fi
 
+# Function to create command files
+create_command() {
+    local name=$1
+    local version=$2
+    local content=$3
+    local dest_file="$HOME/.claude/commands/${name}.md"
+    
+    if [ -f "$dest_file" ]; then
+        # Check version
+        local_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$dest_file" 2>/dev/null || echo "0.0.0")
+        if [ "$local_ver" != "$version" ]; then
+            echo "$content" > "$dest_file"
+            echo -e "   ${GREEN}✓${NC} Updated ${name}.md (${local_ver} → ${version})"
+            return 1
+        else
+            echo -e "   ${BLUE}−${NC} ${name}.md already up to date"
+            return 2
+        fi
+    else
+        echo "$content" > "$dest_file"
+        echo -e "   ${GREEN}✓${NC} Installed ${name}.md"
+        return 0
+    fi
+}
+
 # Ask about essential commands
 echo -e "\n${BLUE}📦 Essential Commands${NC}"
 echo -e "Would you like to install 5 essential commands? (recommended)"
@@ -320,48 +345,276 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]] || [ -z "$REPLY" ]; then
     echo -e "\n${BLUE}Installing essential commands...${NC}\n"
     
-    # Commands to install
-    commands=(
-        "start-project:Start a new project with smart tech stack detection"
-        "add-feature:Add a feature following project patterns"
-        "fix-bug:Debug and fix issues systematically"
-        "write-tests:Create comprehensive tests"
-        "deploy:Deploy your project to production"
-    )
-    
     # Install each command
     cmd_installed=0
     cmd_updated=0
     cmd_skipped=0
     
-    commands_dir="get-started-with-claude-code-main/get-started/commands"
+    # Create start-project command
+    create_command "start-project" "1.0.0" '# Start New Project
+<!-- VERSION: 1.0.0 -->
+
+Help me plan and set up a new **$ARGUMENTS** project.
+
+## First, let me understand your project:
+
+1. **What are you building?** (Tell me about the project idea)
+2. **Who will use it?** (Target users/audience)  
+3. **Core features?** (What must it do?)
+
+## Based on your needs, I'\''ll:
+
+### 1. Detect Existing Context
+- Check for package.json, requirements.txt, Gemfile, etc.
+- Look for .env files or configuration
+- Identify any existing code patterns
+
+### 2. Recommend Tech Stack
+Based on what you'\''re building, I'\''ll suggest an appropriate stack:
+
+**🐍 Python + AI Stack**
+- Backend: Python 3.10+ + FastAPI + Uvicorn
+- Database: SQLite (simple) or PostgreSQL (scalable)
+- AI: Google Gemini API (gemini-2.5-flash for speed)
+- Structure: Clean API-first architecture
+
+**🟢 Node.js Stack**  
+- Backend: Node.js + Express + TypeScript
+- Database: PostgreSQL + Prisma ORM
+- Testing: Jest + Supertest
+- Structure: MVC with service layer
+
+**⚛️ Modern Frontend**
+- Framework: Vue 3 or React 18  
+- Build: Vite (lightning fast)
+- Styling: Tailwind CSS
+- State: Pinia (Vue) or Zustand (React)
+
+**🚀 Full-Stack**
+- Any combination of the above
+- Monorepo or separate repos
+- Docker-ready setup
+
+### 3. Create Project Structure
+I'\''ll create the perfect folder structure for your chosen stack.
+
+### 4. Generate PROJECT.md
+Tailored to your project with:
+- Problem/solution clearly defined
+- User stories based on your description  
+- Progress tracking setup
+- Tech decisions documented
+
+### 5. Generate PLANNING.md  
+With stack-specific tasks:
+- Current sprint priorities
+- Technical setup tasks
+- Testing approach
+- Deployment planning
+
+### 6. Set Up Configuration
+- Create .env.example with needed variables
+- Add appropriate .gitignore
+- Set up linting/formatting configs
+- Add README with setup instructions
+
+## Let'\''s build something amazing!
+
+Tell me about your project and I'\''ll help you get started with the perfect setup.'
+    result=$?
+    [ $result -eq 0 ] && ((cmd_installed++))
+    [ $result -eq 1 ] && ((cmd_updated++))
+    [ $result -eq 2 ] && ((cmd_skipped++))
     
-    for cmd in "${commands[@]}"; do
-        name="${cmd%%:*}"
-        source_file="$commands_dir/${name}.md"
-        dest_file="$HOME/.claude/commands/${name}.md"
-        
-        if [ -f "$source_file" ]; then
-            if [ -f "$dest_file" ]; then
-                # Check versions
-                local_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$dest_file" 2>/dev/null || echo "0.0.0")
-                new_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$source_file" 2>/dev/null || echo "1.0.0")
-                
-                if [ "$local_ver" != "$new_ver" ]; then
-                    cp "$source_file" "$dest_file"
-                    echo -e "   ${GREEN}✓${NC} Updated ${name}.md (${local_ver} → ${new_ver})"
-                    ((cmd_updated++))
-                else
-                    echo -e "   ${BLUE}−${NC} ${name}.md already up to date"
-                    ((cmd_skipped++))
-                fi
-            else
-                cp "$source_file" "$dest_file"
-                echo -e "   ${GREEN}✓${NC} Installed ${name}.md"
-                ((cmd_installed++))
-            fi
-        fi
-    done
+    # Create add-feature command
+    create_command "add-feature" "1.0.0" '# Add Feature
+<!-- VERSION: 1.0.0 -->
+
+I want to add **$ARGUMENTS** to the project.
+
+## Let me help you build this feature properly:
+
+### 1. First, I'\''ll understand:
+- Current project structure and patterns
+- Existing similar features to follow conventions
+- Tech stack and frameworks in use
+- Testing approach
+
+### 2. Plan the implementation:
+- Break down the feature into components
+- Identify dependencies and integrations
+- Consider edge cases and error handling
+- Plan the testing strategy
+
+### 3. Build incrementally:
+- Start with the core functionality
+- Add proper error handling
+- Include logging where appropriate
+- Write tests alongside the code
+- Update documentation
+
+### 4. Follow project patterns:
+- Match existing code style
+- Use established naming conventions
+- Integrate with current architecture
+- Maintain consistency
+
+## What I need from you:
+- Describe how users will interact with this feature
+- Any specific requirements or constraints
+- Should this integrate with existing features?
+- Any performance or security considerations?
+
+Let'\''s build this feature the right way!'
+    result=$?
+    [ $result -eq 0 ] && ((cmd_installed++))
+    [ $result -eq 1 ] && ((cmd_updated++))
+    [ $result -eq 2 ] && ((cmd_skipped++))
+    
+    # Create fix-bug command
+    create_command "fix-bug" "1.0.0" '# Fix Bug
+<!-- VERSION: 1.0.0 -->
+
+Help me fix: **$ARGUMENTS**
+
+## Let'\''s debug this systematically:
+
+### 1. Understand the problem:
+- What'\''s the expected behavior?
+- What'\''s actually happening?
+- When did this start?
+- Can you reproduce it consistently?
+
+### 2. Investigate:
+- Check error messages and logs
+- Identify the code path involved
+- Look for recent changes
+- Test edge cases
+
+### 3. Fix approach:
+- Isolate the root cause
+- Implement the minimal fix
+- Add tests to prevent regression
+- Verify the fix doesn'\''t break other features
+
+### 4. Document:
+- Comment why the fix was needed
+- Update any affected documentation
+- Add to test suite
+
+## Share with me:
+- Error messages or stack traces
+- Steps to reproduce
+- Any code you suspect is involved
+- What you'\''ve already tried
+
+Let'\''s solve this together!'
+    result=$?
+    [ $result -eq 0 ] && ((cmd_installed++))
+    [ $result -eq 1 ] && ((cmd_updated++))
+    [ $result -eq 2 ] && ((cmd_skipped++))
+    
+    # Create write-tests command
+    create_command "write-tests" "1.0.0" '# Write Tests
+<!-- VERSION: 1.0.0 -->
+
+Write tests for **$ARGUMENTS**
+
+## Let'\''s create comprehensive tests:
+
+### 1. Identify test framework:
+- Check existing test setup (Jest, pytest, vitest, etc.)
+- Follow established patterns
+- Use appropriate test utilities
+
+### 2. Test coverage strategy:
+- **Happy path** - Normal expected usage
+- **Edge cases** - Boundary conditions
+- **Error cases** - Invalid inputs, failures
+- **Integration** - How components work together
+
+### 3. Test structure:
+- Clear test descriptions
+- Arrange-Act-Assert pattern
+- Isolated test cases
+- Meaningful assertions
+
+### 4. Best practices:
+- Keep tests simple and focused
+- Make tests deterministic
+- Use meaningful test data
+- Mock external dependencies appropriately
+
+## What to test:
+- Core functionality
+- Input validation
+- Error handling
+- State changes
+- Side effects
+
+Let me analyze the code and write appropriate tests!'
+    result=$?
+    [ $result -eq 0 ] && ((cmd_installed++))
+    [ $result -eq 1 ] && ((cmd_updated++))
+    [ $result -eq 2 ] && ((cmd_skipped++))
+    
+    # Create deploy command
+    create_command "deploy" "1.0.0" '# Deploy Project
+<!-- VERSION: 1.0.0 -->
+
+Help me deploy **$ARGUMENTS**
+
+## Let'\''s get your project live:
+
+### 1. Pre-deployment checklist:
+- [ ] All tests passing
+- [ ] Environment variables configured
+- [ ] Database migrations ready
+- [ ] Static assets optimized
+- [ ] Security headers configured
+- [ ] Error monitoring setup
+
+### 2. Deployment options:
+
+**🚀 Simple (Free/Low Cost)**
+- Vercel/Netlify (frontend)
+- Railway/Render (backend)
+- Supabase/Neon (database)
+
+**☁️ Scalable**
+- AWS/Google Cloud/Azure
+- Docker containers
+- Kubernetes orchestration
+
+**🎯 Specific Platforms**
+- Heroku (easy but paid)
+- DigitalOcean App Platform
+- Fly.io (global edge)
+
+### 3. Setup steps:
+- Configure deployment platform
+- Set environment variables
+- Set up CI/CD pipeline
+- Configure domain/SSL
+- Set up monitoring
+
+### 4. Post-deployment:
+- Verify all features work
+- Check performance
+- Monitor errors
+- Set up backups
+
+## Tell me:
+- Where do you want to deploy?
+- Budget constraints?
+- Expected traffic?
+- Any specific requirements?
+
+Let'\''s get your project live!'
+    result=$?
+    [ $result -eq 0 ] && ((cmd_installed++))
+    [ $result -eq 1 ] && ((cmd_updated++))
+    [ $result -eq 2 ] && ((cmd_skipped++))
     
     if [ $cmd_installed -gt 0 ] || [ $cmd_updated -gt 0 ]; then
         echo -e "\n${GREEN}✅ Commands ready!${NC}"
