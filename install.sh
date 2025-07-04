@@ -15,8 +15,9 @@ NC='\033[0m' # No Color
 # Error handler
 trap 'echo -e "\n${RED}Error occurred. Installation may be incomplete.${NC}"' ERR
 
-echo -e "${BLUE}🚀 Claude Code Smart Installer${NC}"
-echo -e "${BLUE}==============================\n${NC}"
+echo -e "${BLUE}Claude Code Smart Installer${NC}"
+echo -e "${BLUE}============================${NC}"
+echo ""
 
 # Helper Functions
 backup_if_needed() {
@@ -24,7 +25,7 @@ backup_if_needed() {
     if [ -f "$file" ]; then
         backup_name="$file.backup.$(date +%Y%m%d_%H%M%S)"
         cp "$file" "$backup_name"
-        echo -e "   ${BLUE}📂 Backed up to: $(basename $backup_name)${NC}"
+        echo -e "   ${BLUE}Backed up to: $(basename $backup_name)${NC}"
     fi
 }
 
@@ -100,11 +101,11 @@ if [ -z "${SKIP_CLAUDE_CHECK:-}" ]; then
     fi
     
     if [ "$claude_found" = false ]; then
-        echo -e "${YELLOW}⚠️  Claude Code not detected in PATH${NC}"
+        echo -e "${YELLOW}WARNING: Claude Code not detected in PATH${NC}"
         echo -e "\nThis might happen if:"
-        echo -e "  • npm global binaries aren't in your PATH"
-        echo -e "  • You installed it in a different shell"
-        echo -e "  • The PATH isn't fully loaded yet"
+        echo -e "  - npm global binaries aren't in your PATH"
+        echo -e "  - You installed it in a different shell"
+        echo -e "  - The PATH isn't fully loaded yet"
         echo -e "\nIf you've already installed Claude Code, you can continue."
         echo -e "If not, install it with: ${GREEN}npm install -g @anthropic-ai/claude-code${NC}"
         echo
@@ -120,7 +121,7 @@ if [ -z "${SKIP_CLAUDE_CHECK:-}" ]; then
 fi
 
 # Download files to temp directory first
-echo -e "${BLUE}📥 Downloading setup files...${NC}"
+echo -e "${BLUE}Downloading setup files...${NC}"
 temp_dir=$(mktemp -d)
 cd "$temp_dir"
 curl -sSL https://github.com/jezweb/get-started-with-claude-code/archive/main.tar.gz | tar xz
@@ -129,13 +130,13 @@ setup_dir="get-started-with-claude-code-main/get-started/personal-setup/.claude"
 # Check installation status
 if [ ! -d "$HOME/.claude" ]; then
     # SCENARIO 1: Fresh install
-    echo -e "${GREEN}🆕 First time setup detected!${NC}"
+    echo -e "${GREEN}First time setup detected!${NC}"
     echo -e "${BLUE}Creating ~/.claude with all files...${NC}"
     
     cp -r "$setup_dir" "$HOME/"
     
-    echo -e "\n${GREEN}✅ Installation complete!${NC}"
-    echo -e "\n${YELLOW}⚠️  IMPORTANT: Personalize your setup:${NC}"
+    echo -e "\n${GREEN}Installation complete!${NC}"
+    echo -e "\n${YELLOW}IMPORTANT: Personalize your setup:${NC}"
     echo -e "   ${GREEN}nano ~/.claude/CLAUDE.md${NC} (or use your favorite editor)"
     echo -e "\n${BLUE}Then start any project:${NC}"
     echo -e "   ${GREEN}cd your-project && claude-code${NC}"
@@ -143,7 +144,7 @@ if [ ! -d "$HOME/.claude" ]; then
     
 else
     # SCENARIO 2: Existing installation
-    echo -e "${CYAN}👋 Welcome back! Checking your existing setup...${NC}\n"
+    echo -e "${CYAN}Welcome back! Checking your existing setup...${NC}\n"
     
     # Check if CLAUDE.md exists and validate structure
     claude_status="missing"
@@ -154,93 +155,93 @@ else
            grep -q "\[Your Title" "$HOME/.claude/CLAUDE.md" 2>/dev/null || \
            grep -q "\[your.email@example.com\]" "$HOME/.claude/CLAUDE.md" 2>/dev/null; then
             claude_status="template"
-            echo -e "📄 CLAUDE.md: ${YELLOW}Found (still using template)${NC}"
+            echo -e "CLAUDE.md: ${YELLOW}Found (still using template)${NC}"
         else
             claude_status="personalized"
             # Check structure
             claude_structure=$(validate_claude_structure)
             if [ "$claude_structure" = "valid_structure" ]; then
-                echo -e "📄 CLAUDE.md: ${GREEN}Found (personalized) ✓${NC}"
+                echo -e "CLAUDE.md: ${GREEN}Found (personalized)${NC}"
             else
-                echo -e "📄 CLAUDE.md: ${YELLOW}Found (different format) ⚠️${NC}"
+                echo -e "CLAUDE.md: ${YELLOW}Found (different format)${NC}"
                 echo -e "   ${CYAN}Your file might be from an older version or customized${NC}"
             fi
         fi
     else
-        echo -e "📄 CLAUDE.md: ${YELLOW}Missing${NC}"
+        echo -e "CLAUDE.md: ${YELLOW}Missing${NC}"
     fi
     
     # Check settings.local.json and validate
     settings_status=$(validate_settings)
     if [ "$settings_status" = "valid" ]; then
-        echo -e "⚙️  settings.local.json: ${GREEN}Found ✓${NC}"
+        echo -e "settings.local.json: ${GREEN}Found${NC}"
         settings_exists=true
     elif [ "$settings_status" = "different_format" ]; then
-        echo -e "⚙️  settings.local.json: ${YELLOW}Found (different format) ⚠️${NC}"
+        echo -e "settings.local.json: ${YELLOW}Found (different format)${NC}"
         settings_exists=true
     else
-        echo -e "⚙️  settings.local.json: ${YELLOW}Missing${NC}"
+        echo -e "settings.local.json: ${YELLOW}Missing${NC}"
         settings_exists=false
     fi
     
     # Check make-command.md version
     make_command_status=$(check_make_command_version)
     if [ "$make_command_status" = "newer_available" ]; then
-        echo -e "📁 commands/make-command.md: ${YELLOW}Found (update available) 🔄${NC}"
+        echo -e "commands/make-command.md: ${YELLOW}Found (update available)${NC}"
         make_command_exists=true
         make_command_outdated=true
     elif [ "$make_command_status" = "up_to_date" ]; then
-        echo -e "📁 commands/make-command.md: ${GREEN}Found (up to date) ✓${NC}"
+        echo -e "commands/make-command.md: ${GREEN}Found (up to date)${NC}"
         make_command_exists=true
         make_command_outdated=false
     elif [ "$make_command_status" = "unknown" ]; then
-        echo -e "📁 commands/make-command.md: ${GREEN}Found ✓${NC}"
+        echo -e "commands/make-command.md: ${GREEN}Found${NC}"
         make_command_exists=true
         make_command_outdated=false
     else
         if [ -d "$HOME/.claude/commands" ]; then
-            echo -e "📁 commands/make-command.md: ${YELLOW}Missing${NC}"
+            echo -e "commands/make-command.md: ${YELLOW}Missing${NC}"
         else
-            echo -e "📁 commands/: ${YELLOW}Missing${NC}"
+            echo -e "commands/: ${YELLOW}Missing${NC}"
         fi
         make_command_exists=false
         make_command_outdated=false
     fi
     
-    echo -e "\n${BLUE}📋 Actions needed:${NC}"
+    echo -e "\n${BLUE}Actions needed:${NC}"
     actions_needed=false
     
     # Determine what needs to be done
     if [ "$claude_status" = "missing" ]; then
-        echo -e "   • Add CLAUDE.md template"
+        echo -e "   - Add CLAUDE.md template"
         actions_needed=true
     elif [ "$claude_status" = "template" ]; then
-        echo -e "   • Your CLAUDE.md still has template placeholders"
+        echo -e "   - Your CLAUDE.md still has template placeholders"
         echo -e "     ${YELLOW}Please personalize it after installation!${NC}"
     elif [ "$claude_structure" = "different_structure" ]; then
-        echo -e "   • Your CLAUDE.md has a different structure"
+        echo -e "   - Your CLAUDE.md has a different structure"
         echo -e "     ${CYAN}This is OK if it's working for you!${NC}"
     fi
     
     if [ "$settings_exists" = false ]; then
-        echo -e "   • Add settings.local.json (reduces approval prompts)"
+        echo -e "   - Add settings.local.json (reduces approval prompts)"
         actions_needed=true
     elif [ "$settings_status" = "different_format" ]; then
-        echo -e "   • Your settings.local.json has a different format"
+        echo -e "   - Your settings.local.json has a different format"
         echo -e "     ${CYAN}This is OK if it's working for you!${NC}"
     fi
     
     if [ "$make_command_exists" = false ]; then
-        echo -e "   • Add make-command.md (teaches custom commands)"
+        echo -e "   - Add make-command.md (teaches custom commands)"
         actions_needed=true
     elif [ "$make_command_outdated" = true ]; then
-        echo -e "   • Update make-command.md to latest version"
+        echo -e "   - Update make-command.md to latest version"
         echo -e "     ${CYAN}New features and improvements available!${NC}"
         actions_needed=true
     fi
     
     if [ "$actions_needed" = false ] && [ "$claude_status" = "personalized" ]; then
-        echo -e "   ${GREEN}None! Your setup is complete. ✨${NC}"
+        echo -e "   ${GREEN}None! Your setup is complete.${NC}"
         echo -e "\n${BLUE}Try creating a new command:${NC}"
         echo -e "   ${GREEN}cd your-project && claude-code${NC}"
         echo -e "   ${GREEN}/user:make-command${NC}"
@@ -261,49 +262,49 @@ else
     fi
     
     # Perform updates
-    echo -e "\n${BLUE}📝 Updating your setup...${NC}"
+    echo -e "\n${BLUE}Updating your setup...${NC}"
     
     # Add CLAUDE.md if missing
     if [ "$claude_status" = "missing" ]; then
         cp "$setup_dir/CLAUDE.md" "$HOME/.claude/"
-        echo -e "   ${GREEN}✓${NC} Added CLAUDE.md template"
+        echo -e "   ${GREEN}[+]${NC} Added CLAUDE.md template"
     fi
     
     # Add settings.local.json if missing
     if [ "$settings_exists" = false ]; then
         cp "$setup_dir/settings.local.json" "$HOME/.claude/"
-        echo -e "   ${GREEN}✓${NC} Added settings.local.json"
+        echo -e "   ${GREEN}[+]${NC} Added settings.local.json"
     fi
     
     # Handle make-command.md updates
     if [ "$make_command_exists" = false ]; then
         mkdir -p "$HOME/.claude/commands"
         cp "$setup_dir/commands/make-command.md" "$HOME/.claude/commands/"
-        echo -e "   ${GREEN}✓${NC} Added make-command.md"
+        echo -e "   ${GREEN}[+]${NC} Added make-command.md"
     elif [ "$make_command_outdated" = true ]; then
         # Get version info for display
         local_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$HOME/.claude/commands/make-command.md" 2>/dev/null || echo "unknown")
         github_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$setup_dir/commands/make-command.md" 2>/dev/null || echo "1.0.0")
         
-        echo -e "\n${YELLOW}📦 Update available for make-command.md${NC}"
-        echo -e "Current version: ${CYAN}$local_ver${NC} → New version: ${GREEN}$github_ver${NC}"
+        echo -e "\n${YELLOW}Update available for make-command.md${NC}"
+        echo -e "Current version: ${CYAN}$local_ver${NC} -> New version: ${GREEN}$github_ver${NC}"
         echo -e "New features: Better project templates, enhanced examples"
         read -p "Update to latest version? (Y/n) " -n 1 -r
         echo ""
         if [[ $REPLY =~ ^[Yy]$ ]] || [ -z "$REPLY" ]; then
             backup_if_needed "$HOME/.claude/commands/make-command.md"
             cp "$setup_dir/commands/make-command.md" "$HOME/.claude/commands/"
-            echo -e "   ${GREEN}✓${NC} Updated make-command.md"
+            echo -e "   ${GREEN}[*]${NC} Updated make-command.md"
         else
-            echo -e "   ${YELLOW}↩${NC} Skipped make-command.md update"
+            echo -e "   ${YELLOW}[-]${NC} Skipped make-command.md update"
         fi
     fi
     
-    echo -e "\n${GREEN}✅ Update complete!${NC}"
+    echo -e "\n${GREEN}Update complete!${NC}"
     
     # Remind about personalization if needed
     if [ "$claude_status" != "personalized" ]; then
-        echo -e "\n${YELLOW}⚠️  Don't forget to personalize:${NC}"
+        echo -e "\n${YELLOW}Don't forget to personalize:${NC}"
         echo -e "   ${GREEN}nano ~/.claude/CLAUDE.md${NC}"
     fi
 fi
@@ -320,28 +321,28 @@ create_command() {
         local_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$dest_file" 2>/dev/null || echo "0.0.0")
         if [ "$local_ver" != "$version" ]; then
             echo "$content" > "$dest_file"
-            echo -e "   ${GREEN}✓${NC} Updated ${name}.md (${local_ver} → ${version})"
+            echo -e "   ${GREEN}[*]${NC} Updated ${name}.md (${local_ver} -> ${version})"
             return 1
         else
-            echo -e "   ${BLUE}−${NC} ${name}.md already up to date"
+            echo -e "   ${BLUE}[-]${NC} ${name}.md already up to date"
             return 2
         fi
     else
         echo "$content" > "$dest_file"
-        echo -e "   ${GREEN}✓${NC} Installed ${name}.md"
+        echo -e "   ${GREEN}[+]${NC} Installed ${name}.md"
         return 0
     fi
 }
 
 # Ask about essential commands
-echo -e "\n${BLUE}📦 Essential Commands${NC}"
+echo -e "\n${BLUE}Essential Commands${NC}"
 echo -e "Would you like to install 5 essential commands? (recommended)"
 echo -e "These smart commands adapt to any project:"
-echo -e "  • start-project - Smart project setup"
-echo -e "  • add-feature - Add features following patterns"
-echo -e "  • fix-bug - Debug systematically"
-echo -e "  • write-tests - Create comprehensive tests"
-echo -e "  • deploy - Deploy to production\n"
+echo -e "  - start-project - Smart project setup"
+echo -e "  - add-feature - Add features following patterns"
+echo -e "  - fix-bug - Debug systematically"
+echo -e "  - write-tests - Create comprehensive tests"
+echo -e "  - deploy - Deploy to production\n"
 
 read -p "Install essential commands? (Y/n) " -n 1 -r
 echo ""
@@ -375,25 +376,25 @@ Help me plan and set up a new **$ARGUMENTS** project.
 ### 2. Recommend Tech Stack
 Based on what you'\''re building, I'\''ll suggest an appropriate stack:
 
-**🐍 Python + AI Stack**
+**[Python + AI Stack]**
 - Backend: Python 3.10+ + FastAPI + Uvicorn
 - Database: SQLite (simple) or PostgreSQL (scalable)
 - AI: Google Gemini API (gemini-2.5-flash for speed)
 - Structure: Clean API-first architecture
 
-**🟢 Node.js Stack**  
+**[Node.js Stack]**  
 - Backend: Node.js + Express + TypeScript
 - Database: PostgreSQL + Prisma ORM
 - Testing: Jest + Supertest
 - Structure: MVC with service layer
 
-**⚛️ Modern Frontend**
+**[Modern Frontend]**
 - Framework: Vue 3 or React 18  
 - Build: Vite (lightning fast)
 - Styling: Tailwind CSS
 - State: Pinia (Vue) or Zustand (React)
 
-**🚀 Full-Stack**
+**[Full-Stack]**
 - Any combination of the above
 - Monorepo or separate repos
 - Docker-ready setup
@@ -579,17 +580,17 @@ Help me deploy **$ARGUMENTS**
 
 ### 2. Deployment options:
 
-**🚀 Simple (Free/Low Cost)**
+**[Simple (Free/Low Cost)]**
 - Vercel/Netlify (frontend)
 - Railway/Render (backend)
 - Supabase/Neon (database)
 
-**☁️ Scalable**
+**[Scalable]**
 - AWS/Google Cloud/Azure
 - Docker containers
 - Kubernetes orchestration
 
-**🎯 Specific Platforms**
+**[Specific Platforms]**
 - Heroku (easy but paid)
 - DigitalOcean App Platform
 - Fly.io (global edge)
@@ -620,7 +621,7 @@ Let'\''s get your project live!'
     [ $result -eq 2 ] && ((cmd_skipped++))
     
     if [ $cmd_installed -gt 0 ] || [ $cmd_updated -gt 0 ]; then
-        echo -e "\n${GREEN}✅ Commands ready!${NC}"
+        echo -e "\n${GREEN}Commands ready!${NC}"
         echo -e "   Installed: ${cmd_installed}, Updated: ${cmd_updated}, Skipped: ${cmd_skipped}"
     fi
 else
@@ -629,7 +630,7 @@ else
 fi
 
 # Common ending message
-echo -e "\n${BLUE}🎉 Ready to build with AI!${NC}"
+echo -e "\n${BLUE}Ready to build with AI!${NC}"
 echo -e "\n${CYAN}Quick start:${NC}"
 echo -e "1. ${GREEN}cd your-project${NC}"
 echo -e "2. ${GREEN}claude-code${NC}"
