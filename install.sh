@@ -379,9 +379,11 @@ EOF
     
     printf "\n"
     print_msg "$GREEN" "Commands ready!"
+    INSTALLED_COMMANDS=true
 else
     print_msg "$YELLOW" "Skipping essential commands."
     print_msg "$NC" "You can always create custom commands with /user:make-command"
+    INSTALLED_COMMANDS=false
 fi
 
 # Final message
@@ -391,7 +393,7 @@ printf "\n"
 print_msg "$CYAN" "Quick start:"
 print_msg "$GREEN" "1. cd your-project"
 print_msg "$GREEN" "2. claude-code"
-if [[ -z "$REPLY" || "$REPLY" =~ ^[Yy]$ ]]; then
+if [ "$INSTALLED_COMMANDS" = true ]; then
     print_msg "$GREEN" "3. /user:start-project (smart project setup)"
 else
     print_msg "$GREEN" "3. /user:make-command (create custom commands)"
