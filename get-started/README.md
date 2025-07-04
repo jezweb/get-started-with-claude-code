@@ -1,154 +1,108 @@
 # Get Started with Claude Code
 
-Start building with AI assistance in just 2 simple steps! This setup gives you a smooth development experience with Claude Code (or any AI assistant).
+The simplest setup for AI-powered development. Just 2 files to copy, then start building!
 
-## 📋 Prerequisites
+## 🚀 Super Simple Setup
 
-1. **Download this repository** (you've already done this!)
-2. **Install Claude Code**: `npm install -g @anthropic-ai/claude-code`
+### Prerequisites
+- Install Claude Code: `npm install -g @anthropic-ai/claude-code`
+- Download this repository (you've already done this!)
 
-## 🎯 Two-Step Setup
+### Step 1: Copy 2 Files (One Time Only)
 
-### Step 1: Personal Setup (One Time Only)
+Copy the personal setup files to your home directory:
 
-Set up your **personal preferences** that Claude will use across ALL your projects.
-
-#### Option A: Simple Copy (No Command Line)
-1. Navigate to the `personal-setup/` folder
-2. Copy the `.claude/` folder to your home directory
+**Option A: Drag & Drop (No Command Line)**
+1. Navigate to `personal-setup/.claude/` folder
+2. Copy the entire `.claude` folder to your home directory:
    - **Windows**: Copy to `C:\Users\YourName\.claude\`
    - **Mac/Linux**: Copy to `~/.claude/`
-3. Edit `~/.claude/CLAUDE.md` with YOUR information (name, preferences, etc.)
+3. Edit `~/.claude/CLAUDE.md` with YOUR personal information
 
-#### Option B: Command Line
+**Option B: Command Line**
 ```bash
-# Copy personal setup files
+# Copy personal setup
 cp -r personal-setup/.claude ~/
-cp personal-setup/CLAUDE.md ~/.claude/
-cp personal-setup/settings.local.json ~/.claude/
 
-# Edit with your personal info
+# Edit with your info
 code ~/.claude/CLAUDE.md  # or nano, vim, etc.
 ```
 
-### Step 2: New Project Setup (Every New Project)
+### Step 2: Start Building
 
-For each new project, copy the **project template** files.
-
-#### Option A: Simple Copy (No Command Line)
-1. Create your new project folder
-2. Copy all files from `new-project-template/` into your project folder
-3. Edit `CLAUDE.md` in your project with the project details
-4. Edit `PROJECT.md` with your project idea
-
-#### Option B: Command Line
 ```bash
-# Create new project
+# Create any project folder
 mkdir my-awesome-project
 cd my-awesome-project
 
-# Copy project template (including hidden files)
-cp -r ../get-started-with-claude-code/get-started/new-project-template/* .
-cp ../get-started-with-claude-code/get-started/new-project-template/.* . 2>/dev/null || true
+# Start Claude Code
+claude-code
 
-# Edit project details
-code CLAUDE.md     # Project-specific settings
-code PROJECT.md    # Your project idea
+# Try your first command
+/user:make-command
 ```
 
-## 🧠 Understanding the Two CLAUDE.md Files
+## 🎯 What You Get
 
-This is important! There are **TWO different** CLAUDE.md files:
+### Essential Files:
+- **CLAUDE.md** - Your personal AI assistant profile (work style, preferences, tech choices)
+- **settings.local.json** - Reduces annoying approval prompts for safe operations
+- **make-command.md** - One slash command that teaches you to create your own commands
 
-### 1. Personal CLAUDE.md (`~/.claude/CLAUDE.md`)
-- **YOUR preferences**: Name, work style, tech preferences
-- **Global settings**: Applies to ALL your projects
-- **Location**: Your home directory (`~/.claude/`)
-- **Contains**: Personal info, coding style, environment preferences
+### Your First Command: `/user:make-command`
+This special command helps you create custom slash commands for YOUR specific needs:
+- `/user:start-project` - Project kickoff helper
+- `/user:add-feature` - Feature development workflow  
+- `/user:fix-bug` - Debugging and fixing issues
+- `/user:deploy` - Deployment assistance
+- And whatever else you need!
 
-### 2. Project CLAUDE.md (in each project folder)
-- **THIS PROJECT'S context**: What you're building, current status
-- **Project-specific**: Only for this particular project
-- **Location**: Inside each project folder
-- **Contains**: Project goals, tech stack for THIS project, current todos
+## 💡 Why This Approach?
 
-Think of it like this:
-- **Personal CLAUDE.md** = "This is WHO I am and HOW I like to work"
-- **Project CLAUDE.md** = "This is WHAT I'm building and WHERE we are"
+**Learning by Doing**: Instead of giving you dozens of pre-made commands, you'll learn to create exactly what YOU need.
 
-## 🚀 Start Building
+**No Confusion**: No complex folder structures, no decision paralysis, no wondering "what do I copy?"
 
-Once you've completed both steps:
+**Personalized**: Your commands, your workflow, your style.
 
-1. Open your project folder in your terminal
-2. Run `claude-code`
-3. Try a mini-prompt like `/start-project` or just describe what you want to build!
-
-Claude now knows:
-- ✅ Your personal preferences and work style
-- ✅ This specific project's context and goals
-- ✅ Current progress and next steps
-
-## 💡 What You Get
-
-### Personal Setup Includes:
-- **Global preferences** for all projects
-- **Mini-prompt commands** like `/start-project`, `/fix-error`, `/add-feature`
-- **Settings** for auto-approvals and tool permissions
-- **Work style preferences** that Claude will remember
-
-### Project Template Includes:
-- **CLAUDE.md** - Project context template
-- **PROJECT.md** - Project idea and progress tracker
-- **PLANNING.md** - Task management scratchpad
-- **docs/HANDOVER.md** - Documentation template
-- **Environment files** - .env.example, .gitignore
-
-## 🔄 Example Workflow
+## 🛠️ Example Workflow
 
 ```bash
-# 1. One-time setup (first time only)
+# 1. One-time setup
 cp -r personal-setup/.claude ~/
-code ~/.claude/CLAUDE.md  # Add your info
+code ~/.claude/CLAUDE.md  # Add your name, preferences, etc.
 
-# 2. Start new project
+# 2. Start any project
 mkdir inventory-tracker
 cd inventory-tracker
-cp -r ../get-started/new-project-template/* .
-cp ../get-started/new-project-template/.* . 2>/dev/null || true
-
-# 3. Describe your project
-code PROJECT.md  # "I want to build an inventory tracker for small shops..."
-
-# 4. Start building with AI
 claude-code
-# Then type: "I want to build the inventory tracker described in PROJECT.md"
+
+# 3. Create your first custom command
+/user:make-command
+# Tell it: "I want a command to help me start new projects"
+
+# 4. Use your new command
+/user:start-project
+# Describe your project idea and let Claude help!
 ```
 
-## 🎯 Next Steps
+## 🎉 Next Steps
 
-After setup, Claude will help you:
-- Choose the right tech stack for your project
-- Set up your development environment
-- Write clean, well-structured code
-- Follow best practices automatically
-- Document as you build
+After setup:
+1. **Try `/user:make-command`** to create your first custom slash command
+2. **Describe what you want to build** and let Claude guide you
+3. **Create more commands** as you discover patterns in your workflow
+4. **Build amazing projects** with your AI pair programmer!
 
 ## 🆘 Need Help?
 
-- **Can't find files?** Make sure you're in the right directory
-- **Claude doesn't remember you?** Check that `~/.claude/CLAUDE.md` exists and has your info
-- **Project context missing?** Make sure `CLAUDE.md` and `PROJECT.md` are in your project folder
-- **Commands not working?** Try restarting Claude Code
-
-## 📚 Advanced Usage
-
-Once comfortable with the basics, explore:
-- **Custom mini-prompts** in `~/.claude/commands/`
-- **Advanced workflows** like TDD, feature branching
-- **Team collaboration** patterns
-- **Integration with existing projects**
+- **Commands not working?** Make sure `.claude/` folder is in your home directory
+- **Claude doesn't know you?** Check that `CLAUDE.md` has your personal info
+- **Too many approval prompts?** The `settings.local.json` should help with that
+- **Want inspiration?** Try `/user:make-command` and see the suggested command ideas
 
 ---
 
-**You're all set!** Claude now knows who you are, how you like to work, and what you're building. Time to create something amazing! 🚀
+**That's it!** No complex templates, no decision paralysis. Just copy 2 files and start building with your AI assistant. 🚀
+
+**Pro tip**: The `/user:make-command` command is like a meta-prompt that teaches you to create the exact development workflow you want. Use it whenever you think "I wish Claude could help me with..."
