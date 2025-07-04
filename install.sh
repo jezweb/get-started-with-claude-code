@@ -300,3 +300,6 @@ echo -e "${BLUE}Learn more:${NC} https://github.com/jezweb/get-started-with-clau
 # Cleanup
 cd - > /dev/null 2>&1 || true
 rm -rf "$temp_dir"
+
+# Clean exit
+exit 0
