@@ -10,9 +10,33 @@ curl -sSL https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/
 
 That's it! The installer will set up your personal Claude Code configuration.
 
+## 🎯 Two Ways to Work
+
+### Option 1: Essential Commands (Recommended)
+Get 5 universal commands that adapt to ANY project:
+
+```bash
+cd get-started && ./install-commands.sh
+```
+
+You'll get:
+- **`/user:start-project`** - Smart project setup with tech stack detection
+- **`/user:add-feature`** - Add features following project patterns
+- **`/user:fix-bug`** - Debug issues systematically
+- **`/user:write-tests`** - Create comprehensive tests
+- **`/user:deploy`** - Deploy to production
+
+### Option 2: Create Your Own
+Learn to make custom commands for YOUR workflow:
+
+```
+claude-code
+/user:make-command
+```
+
 ## 📁 What's Here?
 
-- **`get-started/`** - Simple 2-file setup for Claude Code
+- **`get-started/`** - Simple 2-file setup + essential commands
 - **`context/`** - Organized documentation for AI context
 - **`archive/`** - Historical files and complex templates
 
@@ -24,25 +48,20 @@ If you prefer to set up manually or you're on Windows:
 2. **Copy setup files**: See [`get-started/README.md`](get-started/README.md)
 3. **Start building**: Run `claude-code` in any project
 
-## 💡 Your First Command
+## 🚀 Smart Project Detection
 
-After setup, try this in any project:
+The `/user:start-project` command automatically detects:
+- Existing tech stack from your files
+- Best practices for your framework
+- Appropriate folder structure
+- Required dependencies
 
-```
-claude-code
-/user:make-command
-```
-
-This special command teaches you how to create custom slash commands for YOUR specific workflow!
-
-## 🚀 Project Templates
-
-The `/user:make-command` command will teach you to create project starters like:
-- **Simple AI Stack** - Python + FastAPI + SQLite + Gemini API
-- **Advanced AI Stack** - Vue + Python + LangChain + Vertex AI  
-- **Mobile Apps** - React Native + Expo
-- **Websites** - HTML + CSS + JavaScript
-- **React Apps** - React + TypeScript + Tailwind
+Works with ANY tech stack:
+- **AI Apps** - Python + FastAPI + Gemini/Claude APIs
+- **Web Apps** - React, Vue, Next.js, plain HTML
+- **Mobile** - React Native, Flutter
+- **Backend** - Node.js, Python, Go, Rust
+- **And more!**
 
 ## 📚 Learn More
 
