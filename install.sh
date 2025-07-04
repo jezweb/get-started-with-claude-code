@@ -27,13 +27,22 @@ backup_if_needed() {
 
 check_make_command_version() {
     if [ -f "$HOME/.claude/commands/make-command.md" ]; then
-        # Use checksums for exact comparison
-        local_hash=$(md5sum "$HOME/.claude/commands/make-command.md" 2>/dev/null | cut -d' ' -f1)
-        github_hash=$(md5sum "$setup_dir/commands/make-command.md" 2>/dev/null | cut -d' ' -f1)
+        # Check for version tag in both files
+        local_version=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$HOME/.claude/commands/make-command.md" 2>/dev/null || echo "0.0.0")
+        github_version=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$setup_dir/commands/make-command.md" 2>/dev/null || echo "0.0.0")
         
-        if [ -z "$local_hash" ] || [ -z "$github_hash" ]; then
-            echo "unknown"
-        elif [ "$local_hash" != "$github_hash" ]; then
+        # Compare versions (simple string comparison for now)
+        if [ "$local_version" = "0.0.0" ] || [ "$github_version" = "0.0.0" ]; then
+            # No version found, fall back to checksum comparison
+            local_hash=$(md5sum "$HOME/.claude/commands/make-command.md" 2>/dev/null | cut -d' ' -f1)
+            github_hash=$(md5sum "$setup_dir/commands/make-command.md" 2>/dev/null | cut -d' ' -f1)
+            
+            if [ "$local_hash" != "$github_hash" ]; then
+                echo "newer_available"
+            else
+                echo "up_to_date"
+            fi
+        elif [ "$local_version" != "$github_version" ]; then
             echo "newer_available"
         else
             echo "up_to_date"
@@ -269,7 +278,12 @@ else
         cp "$setup_dir/commands/make-command.md" "$HOME/.claude/commands/"
         echo -e "   ${GREEN}✓${NC} Added make-command.md"
     elif [ "$make_command_outdated" = true ]; then
+        # Get version info for display
+        local_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$HOME/.claude/commands/make-command.md" 2>/dev/null || echo "unknown")
+        github_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$setup_dir/commands/make-command.md" 2>/dev/null || echo "1.0.0")
+        
         echo -e "\n${YELLOW}📦 Update available for make-command.md${NC}"
+        echo -e "Current version: ${CYAN}$local_ver${NC} → New version: ${GREEN}$github_ver${NC}"
         echo -e "New features: Better project templates, enhanced examples"
         read -p "Update to latest version? (Y/n) " -n 1 -r
         echo

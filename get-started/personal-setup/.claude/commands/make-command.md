@@ -1,4 +1,5 @@
 # Create Your Own Custom Slash Command
+<!-- VERSION: 1.0.0 -->
 
 I want to create a custom slash command for Claude Code.
 
