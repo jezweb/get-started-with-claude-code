@@ -305,16 +305,85 @@ else
     fi
 fi
 
+# Ask about essential commands
+echo -e "\n${BLUE}📦 Essential Commands${NC}"
+echo -e "Would you like to install 5 essential commands? (recommended)"
+echo -e "These smart commands adapt to any project:"
+echo -e "  • start-project - Smart project setup"
+echo -e "  • add-feature - Add features following patterns"
+echo -e "  • fix-bug - Debug systematically"
+echo -e "  • write-tests - Create comprehensive tests"
+echo -e "  • deploy - Deploy to production\n"
+
+read -p "Install essential commands? (Y/n) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]] || [ -z "$REPLY" ]; then
+    echo -e "\n${BLUE}Installing essential commands...${NC}\n"
+    
+    # Commands to install
+    commands=(
+        "start-project:Start a new project with smart tech stack detection"
+        "add-feature:Add a feature following project patterns"
+        "fix-bug:Debug and fix issues systematically"
+        "write-tests:Create comprehensive tests"
+        "deploy:Deploy your project to production"
+    )
+    
+    # Install each command
+    cmd_installed=0
+    cmd_updated=0
+    cmd_skipped=0
+    
+    commands_dir="get-started-with-claude-code-main/get-started/commands"
+    
+    for cmd in "${commands[@]}"; do
+        name="${cmd%%:*}"
+        source_file="$commands_dir/${name}.md"
+        dest_file="$HOME/.claude/commands/${name}.md"
+        
+        if [ -f "$source_file" ]; then
+            if [ -f "$dest_file" ]; then
+                # Check versions
+                local_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$dest_file" 2>/dev/null || echo "0.0.0")
+                new_ver=$(grep -oP '<!-- VERSION: \K[0-9.]+' "$source_file" 2>/dev/null || echo "1.0.0")
+                
+                if [ "$local_ver" != "$new_ver" ]; then
+                    cp "$source_file" "$dest_file"
+                    echo -e "   ${GREEN}✓${NC} Updated ${name}.md (${local_ver} → ${new_ver})"
+                    ((cmd_updated++))
+                else
+                    echo -e "   ${BLUE}−${NC} ${name}.md already up to date"
+                    ((cmd_skipped++))
+                fi
+            else
+                cp "$source_file" "$dest_file"
+                echo -e "   ${GREEN}✓${NC} Installed ${name}.md"
+                ((cmd_installed++))
+            fi
+        fi
+    done
+    
+    if [ $cmd_installed -gt 0 ] || [ $cmd_updated -gt 0 ]; then
+        echo -e "\n${GREEN}✅ Commands ready!${NC}"
+        echo -e "   Installed: ${cmd_installed}, Updated: ${cmd_updated}, Skipped: ${cmd_skipped}"
+    fi
+else
+    echo -e "${YELLOW}Skipping essential commands.${NC}"
+    echo -e "You can always create custom commands with ${GREEN}/user:make-command${NC}"
+fi
+
 # Common ending message
 echo -e "\n${BLUE}🎉 Ready to build with AI!${NC}"
-echo -e "   ${GREEN}cd your-project && claude-code${NC}"
-echo -e "   ${GREEN}/user:make-command${NC} (creates custom commands)\n"
+echo -e "\n${CYAN}Quick start:${NC}"
+echo -e "1. ${GREEN}cd your-project${NC}"
+echo -e "2. ${GREEN}claude-code${NC}"
+if [[ $REPLY =~ ^[Yy]$ ]] || [ -z "$REPLY" ]; then
+    echo -e "3. ${GREEN}/user:start-project${NC} (smart project setup)"
+else
+    echo -e "3. ${GREEN}/user:make-command${NC} (create custom commands)"
+fi
 
-echo -e "${YELLOW}📦 Want essential commands?${NC}"
-echo -e "   Install pre-made commands for projects, features, and deployment:"
-echo -e "   ${GREEN}cd get-started && ./install-commands.sh${NC}\n"
-
-echo -e "${BLUE}Learn more:${NC} https://github.com/jezweb/get-started-with-claude-code"
+echo -e "\n${BLUE}Learn more:${NC} https://github.com/jezweb/get-started-with-claude-code"
 
 # Cleanup
 cd - > /dev/null 2>&1 || true

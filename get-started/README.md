@@ -52,15 +52,9 @@ claude-code
 ### Your First Command: `/user:make-command`
 This special command helps you create custom slash commands for YOUR specific needs.
 
-### 🎯 Or Install Essential Commands (Recommended!)
-We've created 5 essential commands that adapt to any project:
+### 🎯 Essential Commands (Included!)
+The installer will ask if you want 5 essential commands that adapt to any project:
 
-```bash
-# From the get-started folder:
-./install-commands.sh
-```
-
-This gives you:
 - `/user:start-project` - Smart project setup with tech stack detection
 - `/user:add-feature` - Add features following project patterns
 - `/user:fix-bug` - Debug issues systematically  

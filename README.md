@@ -8,27 +8,25 @@ The simplest way to supercharge your development with AI assistance.
 curl -sSL https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/install.sh | bash
 ```
 
-That's it! The installer will set up your personal Claude Code configuration.
+That's it! The installer will:
+1. Set up your personal Claude Code configuration
+2. Ask if you want 5 essential commands (recommended!)
 
-## 🎯 Two Ways to Work
+## 🎯 What You Get
 
-### Option 1: Essential Commands (Recommended)
-Get 5 universal commands that adapt to ANY project:
+### Personal Setup Files:
+- **CLAUDE.md** - Your AI assistant profile (customize with your info!)
+- **settings.local.json** - Reduces annoying approval prompts
+- **make-command.md** - Creates custom commands for YOUR workflow
 
-```bash
-cd get-started && ./install-commands.sh
-```
-
-You'll get:
+### Essential Commands (Optional but Recommended):
 - **`/user:start-project`** - Smart project setup with tech stack detection
 - **`/user:add-feature`** - Add features following project patterns
 - **`/user:fix-bug`** - Debug issues systematically
 - **`/user:write-tests`** - Create comprehensive tests
 - **`/user:deploy`** - Deploy to production
 
-### Option 2: Create Your Own
-Learn to make custom commands for YOUR workflow:
-
+### Create Your Own Commands:
 ```
 claude-code
 /user:make-command
