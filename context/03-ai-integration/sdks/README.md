@@ -23,8 +23,11 @@ npm install openai
 # Anthropic Claude SDK
 npm install @anthropic-ai/sdk
 
-# Google Generative AI (Gemini)
-npm install @google/generative-ai
+# Google Gen AI SDK (Gemini) - New unified SDK
+npm install @google/genai
+
+# Old SDK (deprecated, support ends Sept 2025)
+# npm install @google/generative-ai
 
 # Vercel AI SDK (unified interface)
 npm install ai @ai-sdk/openai @ai-sdk/anthropic
@@ -452,16 +455,22 @@ async function claudeWithTools(prompt) {
 
 ## 💎 Google Gemini SDK
 
+### ⚠️ Important: New Google Gen AI SDK
+
+Google has introduced a new unified SDK (`@google/genai`) that replaces the old `@google/generative-ai` package. The old SDK will lose support by September 2025.
+
 ### Basic Setup
 
 ```javascript
-import { GoogleGenerativeAI } from '@google/generative-ai'
+// New SDK - google-genai (recommended)
+import { GoogleGenerativeAI } from '@google/genai'
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY)
 
-// Text generation
+// Text generation with latest models
 async function generateWithGemini(prompt) {
-  const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
+  // Latest models: gemini-2.5-flash, gemini-2.5-pro, gemini-2.0-flash
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
   
   const result = await model.generateContent(prompt)
   const response = await result.response
@@ -471,7 +480,7 @@ async function generateWithGemini(prompt) {
 
 // Streaming
 async function streamGemini(prompt, onChunk) {
-  const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
   
   const result = await model.generateContentStream(prompt)
   
@@ -480,14 +489,28 @@ async function streamGemini(prompt, onChunk) {
     onChunk(chunkText)
   }
 }
+
+// Using thinking models for complex reasoning
+async function thinkingGemini(prompt) {
+  const model = genAI.getGenerativeModel({ 
+    model: 'gemini-2.5-pro', // Best for complex reasoning
+    generationConfig: {
+      temperature: 0.7,
+      maxOutputTokens: 65536, // Supports up to 65k tokens output
+    }
+  })
+  
+  const result = await model.generateContent(prompt)
+  return result.response.text()
+}
 ```
 
-### Multi-Modal with Gemini
+### Multi-Modal with Gemini 2.x
 
 ```javascript
-// Image analysis
+// Image analysis with Gemini 2.5 Flash
 async function analyzeImageGemini(imagePath, prompt) {
-  const model = genAI.getGenerativeModel({ model: 'gemini-pro-vision' })
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
   
   const imageParts = [
     {
@@ -504,9 +527,27 @@ async function analyzeImageGemini(imagePath, prompt) {
   return response.text()
 }
 
+// Native image generation with Gemini 2.0 Flash
+async function generateImageGemini(prompt) {
+  const model = genAI.getGenerativeModel({ 
+    model: 'gemini-2.0-flash-preview-image-generation' 
+  })
+  
+  const result = await model.generateContent({
+    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+    generationConfig: {
+      responseModalities: ['image', 'text'], // Enable multi-modal output
+    }
+  })
+  
+  const response = await result.response
+  // Response will contain both text and generated images
+  return response
+}
+
 // Multi-turn conversations
 async function chatWithGemini() {
-  const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
   
   const chat = model.startChat({
     history: [
@@ -520,7 +561,7 @@ async function chatWithGemini() {
       },
     ],
     generationConfig: {
-      maxOutputTokens: 1000,
+      maxOutputTokens: 8192,
       temperature: 0.9,
     },
   })
@@ -533,9 +574,9 @@ async function chatWithGemini() {
 ### Advanced Gemini Features
 
 ```javascript
-// Function calling with Gemini
-const functionDeclarations = [
-  {
+// Function calling with new SDK
+const tools = [{
+  functionDeclarations: [{
     name: 'getWeather',
     description: 'Get weather for a location',
     parameters: {
@@ -552,13 +593,13 @@ const functionDeclarations = [
       },
       required: ['location']
     }
-  }
-]
+  }]
+}]
 
 async function geminiWithFunctions(prompt) {
   const model = genAI.getGenerativeModel({
-    model: 'gemini-pro',
-    tools: [{ functionDeclarations }]
+    model: 'gemini-2.5-flash',
+    tools: tools
   })
   
   const result = await model.generateContent(prompt)
@@ -589,18 +630,46 @@ async function geminiWithFunctions(prompt) {
   return response.text()
 }
 
-// Safety settings
+// URL Context - Process web pages directly
+async function processURLWithGemini(url, question) {
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+  
+  const result = await model.generateContent({
+    contents: [{
+      role: 'user',
+      parts: [
+        { text: question },
+        { urlData: { url: url } }
+      ]
+    }]
+  })
+  
+  return result.response.text()
+}
+
+// Google Search Grounding
+async function searchGroundedGemini(prompt) {
+  const model = genAI.getGenerativeModel({ 
+    model: 'gemini-2.5-flash',
+    tools: [{ googleSearch: {} }] // Enable Google Search
+  })
+  
+  const result = await model.generateContent(prompt)
+  return result.response.text()
+}
+
+// Safety settings with new categories
 async function generateWithSafety(prompt) {
   const model = genAI.getGenerativeModel({
-    model: 'gemini-pro',
+    model: 'gemini-2.5-flash',
     safetySettings: [
       {
-        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-        threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        category: 'HARM_CATEGORY_HARASSMENT',
+        threshold: 'BLOCK_MEDIUM_AND_ABOVE',
       },
       {
-        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-        threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
+        category: 'HARM_CATEGORY_HATE_SPEECH',
+        threshold: 'BLOCK_LOW_AND_ABOVE',
       },
     ],
   })
@@ -613,6 +682,124 @@ async function generateWithSafety(prompt) {
       return 'Content was blocked due to safety filters'
     }
     throw error
+  }
+}
+```
+
+### Live API for Real-time Interactions
+
+```javascript
+// Live API for bidirectional voice/video (Preview)
+import { GoogleGenerativeAI } from '@google/genai'
+
+async function setupLiveSession() {
+  const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY)
+  
+  // Create live session with Gemini 2.5 Flash Live
+  const model = genAI.getGenerativeModel({ 
+    model: 'gemini-live-2.5-flash-preview' 
+  })
+  
+  const session = await model.startLiveSession({
+    config: {
+      model: 'gemini-live-2.5-flash-preview',
+      generationConfig: {
+        responseModalities: ['audio', 'text'],
+        speechConfig: {
+          voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } }
+        }
+      }
+    }
+  })
+  
+  // Handle audio/video streams
+  session.on('audio', (audioData) => {
+    // Process audio response
+  })
+  
+  session.on('text', (textData) => {
+    // Process text response
+  })
+  
+  // Send audio input
+  await session.sendAudio(audioBuffer)
+  
+  return session
+}
+```
+
+### Text-to-Speech with Gemini
+
+```javascript
+// Native TTS with Gemini 2.5 Flash/Pro Preview TTS
+async function textToSpeech(text, voice = 'default') {
+  const model = genAI.getGenerativeModel({ 
+    model: 'gemini-2.5-flash-preview-tts' 
+  })
+  
+  const result = await model.generateContent({
+    contents: [{ role: 'user', parts: [{ text: text }] }],
+    generationConfig: {
+      responseModalities: ['audio'],
+      speechConfig: {
+        voiceConfig: { 
+          prebuiltVoiceConfig: { voiceName: voice } 
+        }
+      }
+    }
+  })
+  
+  // Returns audio data
+  return result.response.audio
+}
+```
+
+### Available Models (as of June 2025)
+
+```javascript
+// Latest Gemini models and their use cases
+const GEMINI_MODELS = {
+  // Thinking models for complex reasoning
+  'gemini-2.5-pro': {
+    description: 'Most powerful thinking model',
+    inputTokens: 1048576,
+    outputTokens: 65536,
+    features: ['thinking', 'multimodal', 'long-context']
+  },
+  
+  // Best price-performance ratio
+  'gemini-2.5-flash': {
+    description: 'Best price-performance, adaptive thinking',
+    inputTokens: 1048576,
+    outputTokens: 65536,
+    features: ['thinking', 'multimodal', 'fast']
+  },
+  
+  // Most cost-efficient
+  'gemini-2.5-flash-lite-preview-06-17': {
+    description: 'Most cost-efficient, high throughput',
+    inputTokens: 1000000,
+    outputTokens: 64000,
+    features: ['multimodal', 'fast', 'cost-efficient']
+  },
+  
+  // Next-gen features
+  'gemini-2.0-flash': {
+    description: 'Next-gen features, native tool use',
+    inputTokens: 1048576,
+    outputTokens: 8192,
+    features: ['multimodal', 'native-tools', 'realtime']
+  },
+  
+  // Specialized models
+  'gemini-2.5-flash-preview-tts': {
+    description: 'Text-to-speech generation',
+    features: ['tts', 'multi-speaker']
+  },
+  
+  'gemini-live-2.5-flash-preview': {
+    description: 'Live bidirectional audio/video',
+    features: ['live-api', 'realtime', 'voice']
   }
 }
 ```
