@@ -309,6 +309,11 @@ fi
 echo -e "\n${BLUE}🎉 Ready to build with AI!${NC}"
 echo -e "   ${GREEN}cd your-project && claude-code${NC}"
 echo -e "   ${GREEN}/user:make-command${NC} (creates custom commands)\n"
+
+echo -e "${YELLOW}📦 Want essential commands?${NC}"
+echo -e "   Install pre-made commands for projects, features, and deployment:"
+echo -e "   ${GREEN}cd get-started && ./install-commands.sh${NC}\n"
+
 echo -e "${BLUE}Learn more:${NC} https://github.com/jezweb/get-started-with-claude-code"
 
 # Cleanup

@@ -50,12 +50,24 @@ claude-code
 - **make-command.md** - One slash command that teaches you to create your own commands
 
 ### Your First Command: `/user:make-command`
-This special command helps you create custom slash commands for YOUR specific needs:
-- `/user:start-project` - Project kickoff helper
-- `/user:add-feature` - Feature development workflow  
-- `/user:fix-bug` - Debugging and fixing issues
-- `/user:deploy` - Deployment assistance
-- And whatever else you need!
+This special command helps you create custom slash commands for YOUR specific needs.
+
+### 🎯 Or Install Essential Commands (Recommended!)
+We've created 5 essential commands that adapt to any project:
+
+```bash
+# From the get-started folder:
+./install-commands.sh
+```
+
+This gives you:
+- `/user:start-project` - Smart project setup with tech stack detection
+- `/user:add-feature` - Add features following project patterns
+- `/user:fix-bug` - Debug issues systematically  
+- `/user:write-tests` - Create comprehensive tests
+- `/user:deploy` - Deploy to production
+
+The magic: These commands are **context-aware** - they detect your tech stack and adapt!
 
 ## 💡 Why This Approach?
 
