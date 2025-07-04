@@ -17,7 +17,7 @@ trap 'echo -e "\n${RED}Error occurred. Installation may be incomplete.${NC}"' ER
 
 echo -e "${BLUE}Claude Code Smart Installer${NC}"
 echo -e "${BLUE}============================${NC}"
-echo ""
+printf "\n"
 
 # Helper Functions
 backup_if_needed() {
@@ -110,7 +110,7 @@ if [ -z "${SKIP_CLAUDE_CHECK:-}" ]; then
         echo -e "If not, install it with: ${GREEN}npm install -g @anthropic-ai/claude-code${NC}"
         echo
         read -p "Continue anyway? (y/N) " -n 1 -r
-        echo ""
+        printf "\n"
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             echo -e "${YELLOW}Installation cancelled.${NC}"
             echo -e "\n${BLUE}Tip:${NC} You can skip this check with:"
@@ -251,9 +251,9 @@ else
     fi
     
     # Ask before proceeding
-    echo ""
+    printf "\n"
     read -p "Proceed with updates? (Y/n) " -n 1 -r
-    echo ""
+    printf "\n"
     if [[ ! $REPLY =~ ^[Yy]$ ]] && [ -n "$REPLY" ]; then
         echo -e "${YELLOW}Installation cancelled. No changes made.${NC}"
         cd - > /dev/null
@@ -290,7 +290,7 @@ else
         echo -e "Current version: ${CYAN}$local_ver${NC} -> New version: ${GREEN}$github_ver${NC}"
         echo -e "New features: Better project templates, enhanced examples"
         read -p "Update to latest version? (Y/n) " -n 1 -r
-        echo ""
+        printf "\n"
         if [[ $REPLY =~ ^[Yy]$ ]] || [ -z "$REPLY" ]; then
             backup_if_needed "$HOME/.claude/commands/make-command.md"
             cp "$setup_dir/commands/make-command.md" "$HOME/.claude/commands/"
@@ -345,7 +345,7 @@ echo -e "  - write-tests - Create comprehensive tests"
 echo -e "  - deploy - Deploy to production\n"
 
 read -p "Install essential commands? (Y/n) " -n 1 -r
-echo ""
+printf "\n"
 if [[ $REPLY =~ ^[Yy]$ ]] || [ -z "$REPLY" ]; then
     echo -e "\n${BLUE}Installing essential commands...${NC}\n"
     
