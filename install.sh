@@ -2,7 +2,7 @@
 # Claude Code Smart Installer - Works for new AND existing users
 # One-line install: curl -sSL https://raw.githubusercontent.com/jezweb/get-started-with-claude-code/main/install.sh | bash
 
-set -e  # Exit on any error
+set -euo pipefail  # Exit on any error, undefined variable, or pipe failure
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -11,6 +11,9 @@ YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
+
+# Error handler
+trap 'echo -e "\n${RED}Error occurred. Installation may be incomplete.${NC}"' ERR
 
 echo -e "${BLUE}🚀 Claude Code Smart Installer${NC}"
 echo -e "${BLUE}==============================\n${NC}"
@@ -106,7 +109,7 @@ if [ -z "$SKIP_CLAUDE_CHECK" ]; then
         echo -e "If not, install it with: ${GREEN}npm install -g @anthropic-ai/claude-code${NC}"
         echo
         read -p "Continue anyway? (y/N) " -n 1 -r
-        echo
+        echo ""
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
             echo -e "${YELLOW}Installation cancelled.${NC}"
             echo -e "\n${BLUE}Tip:${NC} You can skip this check with:"
@@ -247,9 +250,9 @@ else
     fi
     
     # Ask before proceeding
-    echo
+    echo ""
     read -p "Proceed with updates? (Y/n) " -n 1 -r
-    echo
+    echo ""
     if [[ ! $REPLY =~ ^[Yy]$ ]] && [ -n "$REPLY" ]; then
         echo -e "${YELLOW}Installation cancelled. No changes made.${NC}"
         cd - > /dev/null
@@ -286,7 +289,7 @@ else
         echo -e "Current version: ${CYAN}$local_ver${NC} → New version: ${GREEN}$github_ver${NC}"
         echo -e "New features: Better project templates, enhanced examples"
         read -p "Update to latest version? (Y/n) " -n 1 -r
-        echo
+        echo ""
         if [[ $REPLY =~ ^[Yy]$ ]] || [ -z "$REPLY" ]; then
             backup_if_needed "$HOME/.claude/commands/make-command.md"
             cp "$setup_dir/commands/make-command.md" "$HOME/.claude/commands/"
@@ -341,7 +344,7 @@ echo -e "  • write-tests - Create comprehensive tests"
 echo -e "  • deploy - Deploy to production\n"
 
 read -p "Install essential commands? (Y/n) " -n 1 -r
-echo
+echo ""
 if [[ $REPLY =~ ^[Yy]$ ]] || [ -z "$REPLY" ]; then
     echo -e "\n${BLUE}Installing essential commands...${NC}\n"
     
